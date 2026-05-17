@@ -7,7 +7,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;700;900&family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tailwind CSS -->
@@ -210,6 +210,7 @@
             flex-shrink: 0;
             padding-inline-end: var(--preview-gap, 140px);
             white-space: nowrap;
+            font-family: var(--preview-font-family, 'Tajawal', sans-serif);
             font-size: var(--preview-size, 160px);
             color: var(--preview-color, #ffffff);
             opacity: var(--preview-opacity, 0.38);
@@ -1888,6 +1889,12 @@
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                                         <div>
+                                            <label class="block text-sm text-gray-400 mb-2">نوع الخط</label>
+                                            <select v-model="data.hero.textStyle.cinematicText.ar.fontFamily" class="input-field">
+                                                <option v-for="font in heroFontOptions" :key="'cinematic-ar-' + font.value" :value="font.value">{{ font.label }}</option>
+                                            </select>
+                                        </div>
+                                        <div>
                                             <label class="block text-sm text-gray-400 mb-2">الحجم (كمبيوتر)</label>
                                             <input type="number" v-model.number="data.hero.textStyle.cinematicText.ar.fontSizeDesktop" class="input-field" dir="ltr">
                                         </div>
@@ -1933,6 +1940,12 @@
                                         <input type="text" v-model="data.hero.textStyle.cinematicText.en.text" class="input-field" dir="ltr">
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <div>
+                                            <label class="block text-sm text-gray-400 mb-2">Font Family</label>
+                                            <select v-model="data.hero.textStyle.cinematicText.en.fontFamily" class="input-field">
+                                                <option v-for="font in heroFontOptions" :key="'cinematic-en-' + font.value" :value="font.value">{{ font.label }}</option>
+                                            </select>
+                                        </div>
                                         <div>
                                             <label class="block text-sm text-gray-400 mb-2">Size (Desktop)</label>
                                             <input type="number" v-model.number="data.hero.textStyle.cinematicText.en.fontSizeDesktop" class="input-field" dir="ltr">
@@ -3527,6 +3540,7 @@
                         enabled: true,
                         ar: {
                             text: "نصمم مستقبل يعكس طموحك",
+                            fontFamily: "'Tajawal', sans-serif",
                             fontSizeDesktop: 160,
                             fontSizeMobile: 92,
                             color: "#ffffff",
@@ -3541,6 +3555,7 @@
                         },
                         en: {
                             text: "We design future that reflects your ambition",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSizeDesktop: 160,
                             fontSizeMobile: 92,
                             color: "#ffffff",
@@ -5752,6 +5767,7 @@
                             enabled: (textStyle.cinematicText?.enabled !== false),
                             ar: {
                                 text: textStyle.cinematicText?.ar?.text || textDefaults.cinematicText.ar.text,
+                                fontFamily: textStyle.cinematicText?.ar?.fontFamily || textDefaults.cinematicText.ar.fontFamily,
                                 fontSizeDesktop: asNumber(textStyle.cinematicText?.ar?.fontSizeDesktop, textDefaults.cinematicText.ar.fontSizeDesktop),
                                 fontSizeMobile: asNumber(textStyle.cinematicText?.ar?.fontSizeMobile, textDefaults.cinematicText.ar.fontSizeMobile),
                                 color: textStyle.cinematicText?.ar?.color || textDefaults.cinematicText.ar.color,
@@ -5766,6 +5782,7 @@
                             },
                             en: {
                                 text: textStyle.cinematicText?.en?.text || textDefaults.cinematicText.en.text,
+                                fontFamily: textStyle.cinematicText?.en?.fontFamily || textDefaults.cinematicText.en.fontFamily,
                                 fontSizeDesktop: asNumber(textStyle.cinematicText?.en?.fontSizeDesktop, textDefaults.cinematicText.en.fontSizeDesktop),
                                 fontSizeMobile: asNumber(textStyle.cinematicText?.en?.fontSizeMobile, textDefaults.cinematicText.en.fontSizeMobile),
                                 color: textStyle.cinematicText?.en?.color || textDefaults.cinematicText.en.color,
@@ -5952,7 +5969,7 @@
                         '--preview-size': `${size}px`,
                         '--preview-color': langSettings.color || '#ffffff',
                         '--preview-opacity': opacity,
-                        fontFamily: ts.titleFontFamily || 'Tajawal'
+                        '--preview-font-family': langSettings.fontFamily || ts[editLang.value]?.titleFontFamily || ts.titleFontFamily || "'Tajawal', sans-serif"
                     };
                 });
 

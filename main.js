@@ -778,6 +778,7 @@ const DEFAULT_HERO_TEXT_STYLE = Object.freeze({
         enabled: true,
         ar: {
             text: "نصمم مستقبل يعكس طموحك",
+            fontFamily: "'Tajawal', sans-serif",
             fontSizeDesktop: 160,
             fontSizeMobile: 92,
             color: "#ffffff",
@@ -792,6 +793,7 @@ const DEFAULT_HERO_TEXT_STYLE = Object.freeze({
         },
         en: {
             text: "We design future that reflects your ambition",
+            fontFamily: "'Poppins', sans-serif",
             fontSizeDesktop: 160,
             fontSizeMobile: 92,
             color: "#ffffff",
@@ -853,6 +855,7 @@ function getHeroTextStyleSettings(hero) {
             enabled: raw.cinematicText?.enabled !== false,
             ar: {
                 text: raw.cinematicText?.ar?.text || DEFAULT_HERO_TEXT_STYLE.cinematicText.ar.text,
+                fontFamily: raw.cinematicText?.ar?.fontFamily || DEFAULT_HERO_TEXT_STYLE.cinematicText.ar.fontFamily,
                 fontSizeDesktop: asNumber(raw.cinematicText?.ar?.fontSizeDesktop, DEFAULT_HERO_TEXT_STYLE.cinematicText.ar.fontSizeDesktop),
                 fontSizeMobile: asNumber(raw.cinematicText?.ar?.fontSizeMobile, DEFAULT_HERO_TEXT_STYLE.cinematicText.ar.fontSizeMobile),
                 color: raw.cinematicText?.ar?.color || DEFAULT_HERO_TEXT_STYLE.cinematicText.ar.color,
@@ -867,6 +870,7 @@ function getHeroTextStyleSettings(hero) {
             },
             en: {
                 text: raw.cinematicText?.en?.text || DEFAULT_HERO_TEXT_STYLE.cinematicText.en.text,
+                fontFamily: raw.cinematicText?.en?.fontFamily || DEFAULT_HERO_TEXT_STYLE.cinematicText.en.fontFamily,
                 fontSizeDesktop: asNumber(raw.cinematicText?.en?.fontSizeDesktop, DEFAULT_HERO_TEXT_STYLE.cinematicText.en.fontSizeDesktop),
                 fontSizeMobile: asNumber(raw.cinematicText?.en?.fontSizeMobile, DEFAULT_HERO_TEXT_STYLE.cinematicText.en.fontSizeMobile),
                 color: raw.cinematicText?.en?.color || DEFAULT_HERO_TEXT_STYLE.cinematicText.en.color,
@@ -990,6 +994,7 @@ function applyHeroTextStyles(hero) {
                 ? Math.min(1, Math.max(0, Number(langSettings.opacity)))
                 : 0.2;
             const fontSize = isMobile ? (langSettings.fontSizeMobile || 120) : (langSettings.fontSizeDesktop || 200);
+            const fontFamily = langSettings.fontFamily || settings.titleFontFamily || "'Tajawal', sans-serif";
             const color = langSettings.color || '#ffffff';
             const loopGap = Math.max(0, Number(langSettings.loopGap) || 0);
             const rawPosY = Number(langSettings.posY);
@@ -1009,6 +1014,7 @@ function applyHeroTextStyles(hero) {
             heroSection.style.setProperty('--marquee-color', hexToRgba(color, opacity));
             heroSection.style.setProperty('--marquee-opacity', String(opacity));
             heroSection.style.setProperty('--marquee-size', `${fontSize}px`);
+            heroSection.style.setProperty('--marquee-font-family', fontFamily);
             heroSection.style.setProperty('--marquee-gap', `${loopGap}px`);
             heroSection.style.setProperty('--marquee-y', `${verticalPos}%`);
             
@@ -1044,7 +1050,7 @@ function setHeroBehindTextContent(slide, lang) {
         targets.forEach((target) => {
             target.textContent = text;
             target.style.display = text ? 'block' : 'none';
-            target.style.fontFamily = heroTextSettings.titleFontFamily;
+            target.style.fontFamily = langSettings.fontFamily || heroTextSettings.titleFontFamily;
         });
 
         if (heroSection) {

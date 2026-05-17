@@ -114,6 +114,7 @@
         "enabled": true,
         "ar": {
           "text": "نصمم مستقبل يعكس طموحك",
+          "fontFamily": "'Tajawal', sans-serif",
           "fontSizeDesktop": 160,
           "fontSizeMobile": 92,
           "color": "#ffffff",
@@ -128,6 +129,7 @@
         },
         "en": {
           "text": "We design future that reflects your ambition",
+          "fontFamily": "'Poppins', sans-serif",
           "fontSizeDesktop": 160,
           "fontSizeMobile": 92,
           "color": "#ffffff",
