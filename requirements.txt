@@ -1,0 +1,3 @@
+# No external libraries needed for this project as it uses only Python built-in modules:
+# http.server, socketserver, json, os, shutil, hashlib, secrets, time, datetime, pathlib, urllib, cgi
+# This makes the project lightweight and easy to deploy on any server with Python 3.x installed.

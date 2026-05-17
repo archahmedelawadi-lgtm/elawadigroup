@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة إدارة العملاء | ELAWADI GROUP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C7A252;
+            --gold-soft: rgba(199, 162, 82, 0.16);
+            --gold-line: rgba(199, 162, 82, 0.26);
+            --black: #050505;
+            --panel: rgba(16, 16, 16, 0.78);
+            --panel-strong: rgba(22, 22, 22, 0.92);
+            --line: rgba(255, 255, 255, 0.09);
+            --muted: #a9a9a9;
+            --white: #f7f2e8;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --warn: #f59e0b;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background:
+                radial-gradient(circle at 12% 0%, rgba(199, 162, 82, 0.14), transparent 30%),
+                radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.06), transparent 28%),
+                linear-gradient(145deg, #030303 0%, #0b0b0b 54%, #050505 100%);
+            color: var(--white);
+            min-height: 100vh;
+        }
+        a { color: inherit; text-decoration: none; }
+        button, input, select { font: inherit; }
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid var(--gold-line);
+            background: rgba(5, 5, 5, 0.78);
+            backdrop-filter: blur(18px);
+        }
+        .topbar-inner, main { width: min(1560px, calc(100% - 32px)); margin: 0 auto; }
+        .topbar-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+        .brand { display: flex; align-items: center; gap: 14px; min-width: 240px; }
+        .brand-mark {
+            width: 46px; height: 46px; border-radius: 14px;
+            display: grid; place-items: center;
+            color: #080808;
+            background: linear-gradient(135deg, #f1d68a, var(--gold));
+            box-shadow: 0 0 42px rgba(199, 162, 82, 0.28);
+        }
+        .brand h1 { margin: 0; font-size: 20px; letter-spacing: 1px; font-weight: 900; }
+        .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+        .top-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+        .status-pill, .sheet-btn {
+            min-height: 42px;
+            display: inline-flex; align-items: center; gap: 10px;
+            border-radius: 999px; padding: 10px 16px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+            transition: transform .25s ease, border-color .25s ease, background .25s ease;
+        }
+        .sheet-btn { color: #0b0b0b; background: linear-gradient(135deg, #f4dfa8, var(--gold)); font-weight: 900; border-color: transparent; }
+        .sheet-btn:hover, .status-pill:hover { transform: translateY(-2px); }
+        .status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--success); box-shadow: 0 0 18px currentColor; }
+        .status-pill.updating .status-dot { background: var(--warn); animation: pulse 1s infinite; }
+        .status-pill.error .status-dot { background: var(--danger); }
+        main { padding: 28px 0 52px; }
+        .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 22px; }
+        .card, .lead-card, .controls, .notice {
+            background: linear-gradient(145deg, var(--panel), rgba(8, 8, 8, 0.82));
+            border: 1px solid var(--gold-line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+        .card { padding: 22px; min-height: 138px; position: relative; overflow: hidden; }
+        .card::after, .lead-card::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(120deg, transparent 0%, rgba(199, 162, 82, 0.05) 45%, transparent 70%);
+            transform: translateX(55%); transition: transform .55s ease;
+        }
+        .card:hover::after, .lead-card:hover::after { transform: translateX(-55%); }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+        .icon-box { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); }
+        .card-label { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .5px; }
+        .card-value { margin: 0; font-size: 34px; line-height: 1; font-weight: 900; }
+        .card-note { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+        .controls { padding: 18px; display: grid; grid-template-columns: 1fr 220px 220px; gap: 14px; margin-bottom: 22px; }
+        .field { position: relative; }
+        .field i { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); color: var(--gold); }
+        input, select {
+            width: 100%; min-height: 50px; border-radius: 14px; border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.055); color: var(--white);
+            outline: none; padding: 0 46px 0 16px; transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+        select { padding: 0 16px; color-scheme: dark; }
+        input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(199, 162, 82, .12); background: rgba(255, 255, 255, .075); }
+        .notice {
+            display: none; align-items: center; justify-content: space-between; gap: 14px;
+            padding: 16px 18px; margin-bottom: 22px;
+            background: linear-gradient(135deg, rgba(199, 162, 82, .95), rgba(239, 213, 143, .9));
+            color: #060606; font-weight: 900;
+        }
+        .notice.show { display: flex; animation: dropIn .38s ease both; }
+        .notice button { border: 0; background: rgba(0, 0, 0, .12); color: #000; border-radius: 999px; padding: 8px 12px; cursor: pointer; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .lead-card { position: relative; overflow: hidden; padding: 22px; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+        .lead-card:hover { transform: translateY(-4px); border-color: rgba(199, 162, 82, .55); box-shadow: 0 30px 86px rgba(0, 0, 0, .58); }
+        .lead-card.new-lead { animation: newLead .7s ease both; border-color: rgba(199, 162, 82, .8); }
+        .lead-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+        .client { display: flex; gap: 13px; align-items: center; min-width: 0; }
+        .avatar { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; background: linear-gradient(135deg, var(--gold), #f2dd9d); color: #070707; font-weight: 900; font-size: 22px; flex: 0 0 auto; }
+        .client h2 { margin: 0; font-size: 19px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .client p { margin: 5px 0 0; color: var(--muted); font-size: 13px; direction: ltr; text-align: right; }
+        .date { color: var(--muted); font-size: 12px; direction: ltr; text-align: left; white-space: nowrap; }
+        .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .badge { border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 900; border: 1px solid var(--line); background: rgba(255,255,255,.055); color: var(--muted); }
+        .badge.new { background: rgba(199, 162, 82, .16); color: #f4dc99; border-color: rgba(199, 162, 82, .38); }
+        .badge.vip { background: linear-gradient(135deg, var(--gold), #f5e1a5); color: #050505; border-color: transparent; }
+        .badge.hot { color: #fecaca; border-color: rgba(239, 68, 68, .35); background: rgba(239, 68, 68, .11); }
+        .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+        .detail, .message, .notes { border: 1px solid var(--line); background: rgba(255,255,255,.045); border-radius: 14px; padding: 14px; }
+        .label { display: block; color: var(--muted); font-size: 11px; font-weight: 900; margin-bottom: 7px; }
+        .value { font-weight: 800; word-break: break-word; }
+        .message, .notes { margin-top: 12px; line-height: 1.8; color: #ded8ca; }
+        .notes { color: #c8bd9d; background: rgba(199, 162, 82, .07); border-color: rgba(199, 162, 82, .22); }
+        .actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+        .action-links { display: flex; gap: 9px; }
+        .action { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 13px; border: 1px solid var(--line); background: rgba(255,255,255,.055); color: var(--muted); transition: .25s ease; cursor: pointer; }
+        .action:hover { color: #050505; background: var(--gold); transform: translateY(-2px); }
+        .empty, .loading { text-align: center; padding: 72px 18px; color: var(--muted); grid-column: 1 / -1; }
+        .loading i { color: var(--gold); font-size: 36px; animation: spin 1s linear infinite; margin-bottom: 14px; }
+        .toast { position: fixed; bottom: 24px; left: 24px; z-index: 60; display: grid; gap: 10px; }
+        .toast-item { padding: 13px 16px; border-radius: 14px; color: #050505; font-weight: 900; background: linear-gradient(135deg, #f1d68a, var(--gold)); box-shadow: var(--shadow); animation: dropIn .25s ease both; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 50% { opacity: .45; } }
+        @keyframes dropIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes newLead { from { opacity: 0; transform: translateY(-16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @media (max-width: 980px) { .stats, .grid { grid-template-columns: 1fr; } .controls { grid-template-columns: 1fr; } .topbar-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; } .top-actions { justify-content: flex-start; } }
+        @media (max-width: 560px) { .topbar-inner, main { width: min(100% - 20px, 1560px); } .details { grid-template-columns: 1fr; } .lead-head, .actions { flex-direction: column; align-items: stretch; } .date { text-align: right; } }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="index.html" aria-label="ELAWADI GROUP">
+                <span class="brand-mark"><i class="fas fa-crown"></i></span>
+                <span>
+                    <h1>ELAWADI <span style="color: var(--gold);">GROUP</span></h1>
+                    <p>Luxury Architectural Leads Management</p>
+                </span>
+            </a>
+            <div class="top-actions">
+                <div id="connectionStatus" class="status-pill">
+                    <span class="status-dot"></span>
+                    <span id="connectionText">متصل</span>
+                </div>
+                <a class="sheet-btn" href="https://docs.google.com/spreadsheets/d/1n2mCiY1OKwmQ2PP7Z0yoWjkqUVNLNU2bLwMi4QyVCHw/edit?usp=sharing" target="_blank" rel="noopener">
+                    <i class="fas fa-table"></i>
+                    فتح Google Sheet
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="stats" aria-label="إحصائيات العملاء">
+            <article class="card"><div class="card-top"><span class="icon-box"><i class="fas fa-users"></i></span><span class="card-label">إجمالي الرسائل</span></div><h2 id="totalLeads" class="card-value">0</h2><p class="card-note">كل العملاء المسجلين</p></article>
+            <article class="card"><div class="card-top"><span class="icon-box"><i class="fas fa-envelope-open-text"></i></span><span class="card-label">الرسائل الجديدة</span></div><h2 id="newLeads" class="card-value">0</h2><p id="newBadge" class="card-note">لا توجد رسائل جديدة</p></article>
+            <article class="card"><div class="card-top"><span class="icon-box"><i class="fas fa-gem"></i></span><span class="card-label">VIP</span></div><h2 id="vipLeads" class="card-value">0</h2><p class="card-note">عملاء أولوية عالية</p></article>
+            <article class="card"><div class="card-top"><span class="icon-box"><i class="fas fa-clock"></i></span><span class="card-label">آخر تحديث</span></div><h2 id="lastUpdate" class="card-value" style="font-size: 23px;">--:--</h2><p class="card-note">تحديث تلقائي كل 5 ثواني</p></article>
+        </section>
+
+        <section class="controls" aria-label="البحث والفلترة">
+            <div class="field"><i class="fas fa-search"></i><input id="searchInput" type="search" placeholder="ابحث بالاسم، الهاتف، الإيميل، الرسالة أو الملاحظات"></div>
+            <select id="statusFilter"><option value="all">كل الحالات</option></select>
+            <select id="typeFilter"><option value="all">كل أنواع المشاريع</option></select>
+        </section>
+
+        <div id="newNotification" class="notice">
+            <span><i class="fas fa-bell"></i> وصل عميل جديد. آخر رسالة ظهرت بالأعلى.</span>
+            <button type="button" id="dismissNotice">إخفاء</button>
+        </div>
+
+        <section id="leadsGrid" class="grid" aria-live="polite">
+            <div class="loading"><i class="fas fa-circle-notch"></i><div>جاري جلب أحدث بيانات العملاء من Google Apps Script...</div></div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzebgI1mv33CmJWS60WfD4RX7sRYA90sRKaujY0apaQBNLikR8MPc_Uljx28VB1ituWNA/exec';
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1n2mCiY1OKwmQ2PP7Z0yoWjkqUVNLNU2bLwMi4QyVCHw/edit?usp=sharing';
+        let allLeads = [];
+        let firstLoad = true;
+        let latestLeadKey = '';
+        let filterOptionsReady = false;
+        let isFetching = false;
+
+        const els = {
+            status: document.getElementById('connectionStatus'),
+            statusText: document.getElementById('connectionText'),
+            grid: document.getElementById('leadsGrid'),
+            notice: document.getElementById('newNotification'),
+            search: document.getElementById('searchInput'),
+            statusFilter: document.getElementById('statusFilter'),
+            typeFilter: document.getElementById('typeFilter'),
+            total: document.getElementById('totalLeads'),
+            newCount: document.getElementById('newLeads'),
+            vip: document.getElementById('vipLeads'),
+            newBadge: document.getElementById('newBadge'),
+            lastUpdate: document.getElementById('lastUpdate'),
+            toast: document.getElementById('toast')
+        };
+
+        function pick(row, keys) {
+            for (const key of keys) {
+                if (row && row[key] !== undefined && row[key] !== null && String(row[key]).trim() !== '') return String(row[key]).trim();
+            }
+            return '';
+        }
+
+        function normalizeLead(row, index) {
+            const date = pick(row, ['date', 'timestamp', 'created_at', 'createdAt', 'تاريخ الإرسال', 'التاريخ', 'Date', 'Timestamp']);
+            const name = pick(row, ['name', 'client_name', 'اسم العميل', 'الاسم', 'Name']);
+            const phone = pick(row, ['phone', 'mobile', 'الهاتف', 'رقم الهاتف', 'Phone']);
+            const email = pick(row, ['email', 'البريد الإلكتروني', 'الإيميل', 'Email']);
+            const projectType = pick(row, ['project_type', 'projecttype', 'projectType', 'نوع المشروع', 'Project Type']);
+            const message = pick(row, ['message', 'الرسالة', 'تفاصيل المشروع', 'Message']);
+            const status = pick(row, ['status', 'الحالة', 'Status']) || 'جديد';
+            const priority = pick(row, ['priority', 'الأولوية', 'Priority']) || inferPriority(projectType, message);
+            const notes = pick(row, ['notes', 'ملاحظات', 'الملاحظات', 'Notes']);
+            const parsedTime = Date.parse(date);
+            return { index, date, name, phone, email, projectType, message, status, priority, notes, parsedTime: Number.isFinite(parsedTime) ? parsedTime : 0 };
+        }
+
+        function inferPriority(projectType, message) {
+            const text = `${projectType} ${message}`.toLowerCase();
+            return /vip|urgent|عاجل|فيلا|villa|luxury|فاخر/.test(text) ? 'VIP' : 'عادي';
+        }
+
+        function getLeadKey(lead) {
+            return [lead.date, lead.name, lead.phone, lead.email, lead.message].join('|');
+        }
+
+        async function fetchLeads() {
+            if (isFetching) return;
+            isFetching = true;
+            setStatus('updating', 'جاري التحديث');
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4500);
+            try {
+                const response = await fetch(`${API_URL}?t=${Date.now()}`, { cache: 'no-store', signal: controller.signal });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const payload = await response.json();
+                const rows = Array.isArray(payload) ? payload : (payload.data || payload.leads || payload.rows || []);
+                if (!Array.isArray(rows)) throw new Error('Unexpected API response');
+
+                const normalized = rows.map(normalizeLead).sort((a, b) => b.parsedTime - a.parsedTime || b.index - a.index);
+                const nextLatest = normalized[0] ? getLeadKey(normalized[0]) : '';
+                const hasNewLead = !firstLoad && nextLatest && nextLatest !== latestLeadKey;
+
+                allLeads = normalized;
+                latestLeadKey = nextLatest;
+                updateFilters();
+                renderDashboard(hasNewLead);
+                setStatus('connected', 'متصل');
+                els.lastUpdate.textContent = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+                if (hasNewLead) {
+                    showNewLeadNotification();
+                }
+            } catch (error) {
+                console.error('Leads fetch failed:', error);
+                setStatus('error', 'خطأ بالاتصال');
+                if (!allLeads.length) {
+                    els.grid.innerHTML = '<div class="empty"><i class="fas fa-triangle-exclamation"></i><h2>تعذر تحميل الرسائل</h2><p>راجع اتصال الإنترنت أو صلاحيات Google Apps Script.</p></div>';
+                }
+            } finally {
+                clearTimeout(timeoutId);
+                isFetching = false;
+                firstLoad = false;
+            }
+        }
+
+        function setStatus(type, text) {
+            els.status.className = `status-pill ${type === 'updating' ? 'updating' : type === 'error' ? 'error' : ''}`;
+            els.statusText.textContent = text;
+        }
+
+        function updateFilters() {
+            const currentStatus = els.statusFilter.value;
+            const currentType = els.typeFilter.value;
+            const statuses = uniqueValues(allLeads.map(lead => lead.status));
+            const types = uniqueValues(allLeads.map(lead => lead.projectType));
+            fillSelect(els.statusFilter, 'كل الحالات', statuses, currentStatus);
+            fillSelect(els.typeFilter, 'كل أنواع المشاريع', types, currentType);
+            filterOptionsReady = true;
+        }
+
+        function uniqueValues(values) {
+            return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ar'));
+        }
+
+        function fillSelect(select, label, values, selected) {
+            select.innerHTML = `<option value="all">${label}</option>` + values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');
+            select.value = values.includes(selected) ? selected : 'all';
+        }
+
+        function renderDashboard(highlightNewest = false) {
+            els.total.textContent = allLeads.length;
+            const newCount = allLeads.filter(lead => /جديد|new/i.test(lead.status)).length;
+            const vipCount = allLeads.filter(lead => /vip|عاجل|هام|high/i.test(lead.priority)).length;
+            els.newCount.textContent = newCount;
+            els.vip.textContent = vipCount;
+            els.newBadge.textContent = newCount ? `${newCount} رسالة تحتاج متابعة` : 'لا توجد رسائل جديدة';
+
+            const query = els.search.value.trim().toLowerCase();
+            const status = els.statusFilter.value;
+            const type = els.typeFilter.value;
+            const filtered = allLeads.filter(lead => {
+                const haystack = [lead.name, lead.phone, lead.email, lead.projectType, lead.message, lead.notes, lead.status, lead.priority].join(' ').toLowerCase();
+                return (!query || haystack.includes(query)) && (status === 'all' || lead.status === status) && (type === 'all' || lead.projectType === type);
+            });
+
+            if (!filtered.length) {
+                els.grid.innerHTML = '<div class="empty"><i class="fas fa-inbox"></i><h2>لا توجد رسائل مطابقة</h2><p>غيّر البحث أو الفلاتر لعرض نتائج أخرى.</p></div>';
+                return;
+            }
+
+            els.grid.innerHTML = filtered.map((lead, index) => renderLeadCard(lead, highlightNewest && index === 0)).join('');
+        }
+
+        function renderLeadCard(lead, isNewest) {
+            const phoneDigits = lead.phone.replace(/[^0-9]/g, '');
+            return `
+                <article class="lead-card ${isNewest ? 'new-lead' : ''}">
+                    <div class="lead-head">
+                        <div class="client">
+                            <div class="avatar">${escapeHtml((lead.name || '?').charAt(0))}</div>
+                            <div>
+                                <h2>${escapeHtml(lead.name || 'عميل غير مسجل')}</h2>
+                                <p>${escapeHtml(lead.phone || 'بدون هاتف')}</p>
+                            </div>
+                        </div>
+                        <time class="date">${escapeHtml(formatDate(lead.date))}</time>
+                    </div>
+                    <div class="badges">
+                        <span class="badge ${/جديد|new/i.test(lead.status) ? 'new' : ''}">${escapeHtml(lead.status || 'جديد')}</span>
+                        <span class="badge ${/vip/i.test(lead.priority) ? 'vip' : /عاجل|high/i.test(lead.priority) ? 'hot' : ''}">${escapeHtml(lead.priority || 'عادي')}</span>
+                    </div>
+                    <div class="details">
+                        <div class="detail"><span class="label">نوع المشروع</span><span class="value">${escapeHtml(lead.projectType || 'غير محدد')}</span></div>
+                        <div class="detail"><span class="label">الإيميل</span><span class="value">${lead.email ? `<a href="mailto:${escapeAttr(lead.email)}">${escapeHtml(lead.email)}</a>` : 'بدون إيميل'}</span></div>
+                    </div>
+                    <div class="message"><span class="label">الرسالة</span>${escapeHtml(lead.message || 'لا توجد رسالة')}</div>
+                    <div class="notes"><span class="label">الملاحظات</span>${escapeHtml(lead.notes || 'لا توجد ملاحظات')}</div>
+                    <div class="actions">
+                        <span class="value">${escapeHtml(lead.name || 'Lead')} · ${escapeHtml(lead.projectType || 'Project')}</span>
+                        <div class="action-links">
+                            <a class="action" href="tel:${escapeAttr(lead.phone)}" title="اتصال"><i class="fas fa-phone"></i></a>
+                            <a class="action" href="https://wa.me/${phoneDigits}" target="_blank" rel="noopener" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+                            <button class="action" type="button" onclick="copyText('${escapeAttr(lead.phone)}')" title="نسخ الهاتف"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                </article>`;
+        }
+
+        function showNewLeadNotification() {
+            els.notice.classList.add('show');
+            playNotificationSound();
+            toast('وصل عميل جديد');
+        }
+
+        function playNotificationSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.45);
+                gain.connect(ctx.destination);
+                [740, 980].forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    osc.connect(gain);
+                    osc.start(ctx.currentTime + i * 0.12);
+                    osc.stop(ctx.currentTime + 0.22 + i * 0.12);
+                });
+            } catch (error) {}
+        }
+
+        function copyText(text) {
+            navigator.clipboard?.writeText(text || '').then(() => toast('تم نسخ رقم الهاتف'));
+        }
+
+        function toast(message) {
+            const item = document.createElement('div');
+            item.className = 'toast-item';
+            item.textContent = message;
+            els.toast.appendChild(item);
+            setTimeout(() => item.remove(), 2600);
+        }
+
+        function formatDate(value) {
+            if (!value) return 'بدون تاريخ';
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) return value;
+            return date.toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' });
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+        }
+
+        function escapeAttr(value) {
+            return escapeHtml(value).replace(/`/g, '&#96;');
+        }
+
+        els.search.addEventListener('input', () => renderDashboard(false));
+        els.statusFilter.addEventListener('change', () => renderDashboard(false));
+        els.typeFilter.addEventListener('change', () => renderDashboard(false));
+        document.getElementById('dismissNotice').addEventListener('click', () => els.notice.classList.remove('show'));
+        els.notice.addEventListener('click', event => {
+            if (event.target.id !== 'dismissNotice') window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        fetchLeads();
+        setInterval(fetchLeads, 5000);
+    </script>
+</body>
+</html>

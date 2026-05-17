@@ -1,0 +1,1357 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Us - free Interior Design Services ">
+  <title>Contact Us | ELAWADI GROUP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+        :root {
+            --gold: #C7A252;
+            --gold-light: #d4b87a;
+            --gold-dark: #a8893f;
+            --black: #1A1A1A;
+            --dark: #FAF7F2;
+            --dark-light: #FFFFFF;
+            --dark-lighter: #F4EEE4;
+            --white: #1A1A1A;
+            --gray: #888888;
+            --gray-light: #cccccc;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 60px rgba(199, 162, 82, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--gold), var(--gold-dark)); border-radius: 4px; }
+
+        /* Navigation */
+        .lux-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .lux-nav.scrolled {
+            background: rgba(249, 247, 242, 0.96);
+            backdrop-filter: blur(20px);
+            padding: 15px 60px;
+            border-bottom: 1px solid rgba(199, 162, 82, 0.25);
+        }
+        .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .nav-logo-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 22px;
+            box-shadow: 0 0 40px rgba(199, 162, 82, 0.2);
+        }
+        .nav-logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; letter-spacing: 1px; color: #fff; font-size: 1.2rem; }
+        .nav-logo-text span { color: var(--primary); }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-actions { display: flex; align-items: center; gap: 30px; }
+        .nav-lang { display: flex; gap: 10px; }
+        .nav-lang button {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .nav-lang button.active, .nav-lang button:hover { background: var(--gold); color: var(--black); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(199, 162, 82, 0.3);
+        }
+        .nav-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(199, 162, 82, 0.4); }
+
+        /* Hero Section */
+        .contact-hero {
+            min-height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(145deg, #faf7f2 0%, #f1eadf 100%);
+        }
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(199, 162, 82, 0.16) 0%, transparent 55%),
+                radial-gradient(circle at 70% 50%, rgba(199, 162, 82, 0.12) 0%, transparent 55%);
+        }
+        .hero-content-lux {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .hero-badge-lux {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(199, 162, 82, 0.1);
+            border: 1px solid rgba(199, 162, 82, 0.3);
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-title-lux {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        .hero-subtitle-lux {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Contact Section */
+        .lux-contact {
+            padding: 120px 0;
+            background: var(--dark);
+        }
+        .contact-grid-lux {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            padding: 0 60px;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-section { display: flex; flex-direction: column; gap: 30px; }
+        
+        .contact-info-card {
+            background: var(--dark-light);
+            border: 1px solid rgba(199, 162, 82, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+        .contact-info-card:hover {
+            transform: translateX(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+        }
+        .contact-info-card.whatsapp:hover { border-color: #25D366; }
+        
+        .contact-info-icon {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--black);
+            flex-shrink: 0;
+            box-shadow: var(--glow);
+        }
+        .contact-info-card.whatsapp .contact-info-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
+        
+        .contact-info-label {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* Social Section */
+        .social-section-lux {
+            background: var(--dark-light);
+            border: 1px solid rgba(199, 162, 82, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 20px;
+        }
+        .social-section-lux h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        .social-grid {
+            display: flex;
+            gap: 15px;
+        }
+        .social-item {
+            width: 55px; height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-light);
+            font-size: 20px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .social-item:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: var(--dark-light);
+            border: 1px solid rgba(199, 162, 82, 0.1);
+            border-radius: 24px;
+            padding: 50px;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .form-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .form-header p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        .lux-form-group {
+            margin-bottom: 25px;
+        }
+        .lux-form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-light);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .lux-form-group input,
+        .lux-form-group select,
+        .lux-form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px 20px;
+            font-size: 16px;
+            color: var(--white);
+            font-family: 'Tajawal', sans-serif;
+            transition: var(--transition);
+        }
+        .lux-form-group input:focus,
+        .lux-form-group select:focus,
+        .lux-form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(199, 162, 82, 0.2);
+        }
+        .lux-form-group input::placeholder,
+        .lux-form-group textarea::placeholder { color: var(--gray); }
+        .lux-form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            background-size: 18px;
+        }
+        .lux-form-group select option { background: var(--dark); color: var(--white); }
+        .lux-form-group textarea { resize: vertical; min-height: 150px; }
+        
+        .btn-lux {
+            width: 100%;
+            padding: 20px 42px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .btn-lux-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            box-shadow: 0 15px 40px rgba(199, 162, 82, 0.4);
+        }
+        .btn-lux-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(199, 162, 82, 0.5);
+        }
+        .btn-lux-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            margin-top: 15px;
+        }
+        .btn-lux-whatsapp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Map Section */
+        .lux-map {
+            padding: 80px 60px;
+            background: var(--dark-light);
+        }
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(199, 162, 82, 0.1);
+            height: 450px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) contrast(1.2);
+            transition: var(--transition);
+        }
+        .map-container:hover iframe { filter: grayscale(0%); }
+
+        /* CTA Section */
+        .lux-cta {
+            padding: 150px 0;
+            background: var(--dark);
+            text-align: center;
+            position: relative;
+        }
+        .lux-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(199, 162, 82, 0.1) 0%, transparent 70%);
+        }
+        .cta-content-lux {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-title-lux {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        .cta-title-lux .gold { color: var(--gold); }
+        .cta-desc-lux {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 50px;
+            line-height: 2;
+        }
+
+        /* Footer */
+        .lux-footer {
+            padding: 80px 60px 40px;
+            background: var(--dark-light);
+            border-top: 1px solid rgba(199, 162, 82, 0.1);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        .footer-brand { max-width: 350px; }
+        .footer-logo { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        .footer-logo-icon {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--black);
+        }
+        .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+        .footer-desc { font-size: 14px; color: var(--gray); line-height: 2; }
+        .footer-title { font-size: 16px; font-weight: 700; margin-bottom: 25px; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--gray); text-decoration: none; font-size: 14px; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); padding-right: 10px; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a {
+            width: 45px; height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        .footer-social a:hover { background: var(--gold); color: var(--black); transform: translateY(-5px); }
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-copyright { font-size: 12px; color: var(--gray); }
+        .footer-links-bottom { display: flex; gap: 30px; }
+        .footer-links-bottom a { color: var(--gray); text-decoration: none; font-size: 12px; transition: var(--transition); }
+        .footer-links-bottom a:hover { color: var(--gold); }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-content { text-align: center; }
+        .loader-logo { font-size: 50px; color: var(--gold); animation: loaderPulse 1.5s infinite; }
+        @keyframes loaderPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } }
+        .loader-bar { width: 200px; height: 3px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; margin: 30px auto 0; overflow: hidden; }
+        .loader-progress { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); width: 0; animation: loaderProgress 2s ease forwards; }
+        @keyframes loaderProgress { to { width: 100%; } }
+
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-grid-lux { grid-template-columns: 1fr; padding: 0 30px; }
+            .lux-footer { padding: 60px 30px 30px; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .lux-nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .lux-map { padding: 60px 30px; }
+        }
+        @media (max-width: 768px) {
+            .contact-form-section { padding: 30px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .lux-map { padding: 40px 15px; }
+            .map-container { height: 300px; }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 1001;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 15px 30px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex !important;
+            }
+
+            .nav-container {
+                display: none !important;
+            }
+
+            .nav-actions {
+                display: none !important;
+            }
+        }
+        /* ===== Unified Notice Navbar ===== */
+        .notice-nav {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            transform: none;
+            width: min(1240px, calc(100% - 24px));
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: #ffffff;
+            border: 2px solid #C7A252;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+            transition: all .35s ease;
+        }
+
+        .notice-nav,
+        .notice-nav * {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+        }
+        .notice-nav.scrolled {
+            background: #ffffff !important;
+            border-color: #C7A252 !important;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.13);
+            backdrop-filter: none !important;
+            padding: 10px 18px !important;
+        }
+
+        .notice-nav .nav-logo {
+            position: absolute;
+            inset-inline-start: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .notice-nav .nav-logo-icon {
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            min-height: 34px;
+            background: transparent;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .notice-nav .nav-logo-img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+            display: block;
+        }
+.notice-nav .nav-logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .notice-nav .nav-logo-text {
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: .4px;
+        }
+
+        .notice-nav .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-width: 0;
+            padding-inline: 280px;
+        }
+
+        .notice-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .notice-nav .nav-links a {
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 4px 0;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .notice-nav .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: #C7A252;
+            transition: width .25s ease;
+        }
+
+        .notice-nav .nav-links a:hover::after,
+        .notice-nav .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .notice-nav .nav-actions {
+            position: absolute;
+            inset-inline-end: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .notice-nav .nav-lang {
+            display: none !important;
+        }
+
+        .notice-nav .nav-call {
+            color: #0f172a;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .notice-nav .nav-call a {
+            color: #64748b;
+            text-decoration: none;
+            margin-inline-start: 4px;
+        }
+
+        .notice-nav .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #C7A252;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 8px 14px;
+            border: 2px solid #C7A252;
+            transition: all .25s ease;
+            box-shadow: none;
+        }
+
+        .notice-nav .nav-cta:hover {
+            background: #A68A3A;
+            border-color: #A68A3A;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1300px) {
+            .notice-nav .nav-container {
+                padding-inline: 240px;
+            }
+
+            .notice-nav .nav-links {
+                gap: 12px;
+            }
+
+            .notice-nav .nav-links a {
+                font-size: 13px;
+            }
+
+            .notice-nav .nav-call {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .notice-nav {
+                width: calc(100% - 18px);
+                padding: 10px 14px;
+                gap: 10px;
+                justify-content: space-between;
+            }
+
+            .notice-nav .nav-logo {
+                position: static;
+                transform: none;
+            }
+
+            .notice-nav .nav-container,
+            .notice-nav .nav-actions {
+                display: none !important;
+            }
+
+            .notice-nav .hamburger {
+                display: flex !important;
+                margin-inline-start: auto;
+            }
+
+            .notice-nav .hamburger span {
+                background: #0f172a;
+            }
+        }
+
+
+
+    </style>
+<style id="en-unified-notice-nav">
+html[lang="en"] .notice-nav {
+    position: fixed !important;
+    top: 16px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-inline: auto !important;
+    transform: none !important;
+    width: min(1380px, calc(100% - 24px)) !important;
+    z-index: 2000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    padding: 10px 18px !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    border: 2px solid #C7A252 !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08) !important;
+    transition: all .35s ease !important;
+    font-family: 'Poppins', 'Cairo', sans-serif !important;
+}
+html[lang="en"] .notice-nav.scrolled {
+    background: #ffffff !important;
+    border-color: #C7A252 !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.13) !important;
+    backdrop-filter: none !important;
+    padding: 10px 18px !important;
+}
+html[lang="en"] .notice-nav .nav-logo {
+    position: absolute !important;
+    inset-inline-start: 18px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+}
+html[lang="en"] .notice-nav .nav-logo-icon,
+html[lang="en"] .notice-nav .nav-logo-img,
+html[lang="en"] .notice-nav .nav-logo img {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+html[lang="en"] .notice-nav .nav-logo-text-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 1.2 !important;
+}
+html[lang="en"] .notice-nav .nav-logo-text,
+html[lang="en"] .notice-nav .logo-elawadi,
+html[lang="en"] .notice-nav .logo-studio,
+html[lang="en"] .notice-nav .nav-logo span {
+    color: #0f172a !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    letter-spacing: .4px !important;
+}
+html[lang="en"] .notice-nav .nav-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding-inline: 320px !important;
+}
+html[lang="en"] .notice-nav .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+html[lang="en"] .notice-nav .nav-links a {
+    color: #0f172a !important;
+    font-size: 13px !important;`r`n    font-weight: 700 !important;
+    text-decoration: none !important;
+    padding: 4px 0 !important;
+    position: relative !important;
+    white-space: nowrap !important;
+}
+html[lang="en"] .notice-nav .nav-links a::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -6px !important;
+    width: 0 !important;
+    height: 2px !important;
+    background: #C7A252 !important;
+    transition: width .25s ease !important;
+}
+html[lang="en"] .notice-nav .nav-links a:hover::after,
+html[lang="en"] .notice-nav .nav-links a.active::after {
+    width: 100% !important;
+}
+html[lang="en"] .notice-nav .nav-actions {
+    position: absolute !important;
+    inset-inline-end: 18px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+}
+html[lang="en"] .notice-nav .nav-lang { display: none !important; }
+html[lang="en"] .notice-nav .nav-call {
+    color: #0f172a !important;
+    font-size: 12px !important;`r`n    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+html[lang="en"] .notice-nav .nav-call a {
+    color: #64748b !important;
+    text-decoration: none !important;
+    margin-inline-start: 4px !important;
+}
+html[lang="en"] .notice-nav .nav-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #C7A252 !important;
+    color: #fff !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    border: 2px solid #C7A252 !important;
+    transition: all .25s ease !important;
+    box-shadow: none !important;
+}
+html[lang="en"] .notice-nav .nav-cta:hover {
+    background: #A68A3A !important;
+    border-color: #A68A3A !important;
+    transform: translateY(-1px) !important;
+}
+@media (max-width: 1300px) {
+    html[lang="en"] .notice-nav .nav-container { padding-inline: 280px !important; }
+    html[lang="en"] .notice-nav .nav-links { gap: 12px !important; }
+    html[lang="en"] .notice-nav .nav-links a { font-size: 13px !important; }
+    html[lang="en"] .notice-nav .nav-call { display: none !important; }
+}
+@media (max-width: 992px) {
+    html[lang="en"] .notice-nav {
+        width: calc(100% - 18px) !important;
+        padding: 10px 14px !important;
+        gap: 10px !important;
+        justify-content: space-between !important;
+    }
+    html[lang="en"] .notice-nav .nav-logo {
+        position: static !important;
+        transform: none !important;
+    }
+    html[lang="en"] .notice-nav .nav-links,
+    html[lang="en"] .notice-nav .nav-container,
+    html[lang="en"] .notice-nav .nav-actions,
+    html[lang="en"] .notice-nav .nav-call { display: none !important; }
+    html[lang="en"] .notice-nav .hamburger {
+        display: flex !important;
+        margin-inline-start: auto !important;
+    }
+    html[lang="en"] .notice-nav .hamburger span { background: #0f172a !important; }
+}
+</style>
+        <script>
+        document.documentElement.classList.add('elawadi-courses-logo-first');
+    </script>
+    <style>
+        html.elawadi-courses-logo-first.elawadi-loader-booting body > :not(#loader) {
+            visibility: hidden !important;
+        }
+    </style><script src="js/loader-boot.js?v=20260511-layered-loader-everywhere1"></script>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo"><i class="fas fa-cube"></i></div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+            <p class="loader-label">Loading</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="lux-nav notice-nav" id="luxNav">
+    <a href="index-en.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <img src="uploads/20260416114117041013.png" alt="Logo" class="nav-logo-img">
+      </div>
+      <div class="nav-logo-text-wrap">
+        <span class="nav-logo-text">ELAWADI GROUP</span>
+      </div>
+    </a>
+
+    <div class="nav-container" id="navContainer">
+      <ul class="nav-links">
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="about-en.html">About Us</a></li>
+        <li><a href="services-en.html">Our Services</a></li>
+        <li><a href="portfolio-en.html">Our Projects</a></li>
+        <li><a href="courses-en.html">Courses</a></li>
+        <li><a href="blog-en.html">Blog</a></li>
+        <li><a href="contact-en.html" class="active">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-actions">
+            <div class="nav-lang lang-switch-pro" role="group" aria-label="Language Switcher">
+                <button type="button" class="lang-btn" data-lang="ar">AR</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
+      <span class="nav-call">Call Us: <a href="tel:+201002512669">+201002512669</a></span>
+      <a href="contact-en.html" class="nav-cta">Get In Touch</a>
+    </div>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+
+
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index-en.html">Home</a>
+    <a href="about-en.html">About Us</a>
+    <a href="services-en.html">Our Services</a>
+    <a href="portfolio-en.html">Our Projects</a>
+    <a href="courses-en.html">Courses</a>
+    <a href="blog-en.html">Blog</a>
+    <a href="contact-en.html">Contact Us</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="hero-content-lux">
+      <div class="hero-badge-lux">
+        <i class="fas fa-headset"></i>
+        <span>We Are Here To Help</span>
+      </div>
+      <h1 class="hero-title-lux">Let's Build Your <span style="color: var(--gold);">Project</span></h1>
+      <p class="hero-subtitle-lux">Share your vision with us and our team will get back to you promptly.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="lux-contact">
+    <div class="contact-grid-lux">
+      <!-- Contact Info -->
+      <div class="contact-info-section">
+        <a href="tel:+201002512669" class="contact-info-card fade-in">
+
+          <div class="contact-info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <div class="contact-info-label">Contact Us</div>
+            <div class="contact-info-value">+201002512669</div>
+
+          </div>
+        </a>
+
+        <a href="https://wa.me/201002512669" target="_blank" class="contact-info-card whatsapp fade-in">
+
+          <div class="contact-info-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div>
+            <div class="contact-info-label">WhatsApp</div>
+            <div class="contact-info-value">+201002512669</div>
+          </div>
+        </a>
+
+        <a href="mailto:info@elawadi.com" class="contact-info-card fade-in">
+          <div class="contact-info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">info@elawadi.com</div>
+          </div>
+        </a>
+
+        <div class="contact-info-card fade-in">
+          <div class="contact-info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-value">First Office: Alexandria, Egypt<br>Second Office: Riyadh, Saudi Arabia</div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="social-section-lux fade-in">
+          <h3>Follow Us</h3>
+          <div class="social-grid social-links" data-social-style="contact" data-social-link-class="social-item"></div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-section fade-in">
+        <div class="form-header">
+          <h2>Send Us a Message</h2>
+          <p>Fill in the form and we will contact you within 24 hours.</p>
+        </div>
+
+        <form id="contactForm">
+          <div class="lux-form-group">
+            <label>Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+          </div>
+
+          <div class="lux-form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="05xxxxxxxx">
+          </div>
+
+          <div class="lux-form-group">
+            <label>Email</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com">
+          </div>
+
+          <div class="lux-form-group">
+            <label>Project Type</label>
+            <select id="project_type" name="project_type" required>
+              <option value="">Select Project Type</option>
+              <option value="apartment">Apartment Design</option>
+              <option value="villa">Villa Design</option>
+              <option value="kitchen">Kitchen Design</option>
+              <option value="bedroom">Bedroom Design</option>
+              <option value="office">Office Design</option>
+              <option value="facade">Facade Design</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="lux-form-group">
+            <label>Project Details</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Write your project details and ideas..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-lux btn-lux-primary">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+
+          <a href="https://wa.me/201002512669?text=Hello%2C%20I%20would%20like%20to%20discuss%20my%20project." target="_blank" class="btn-lux btn-lux-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            Contact via WhatsApp
+          </a>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="lux-map">
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58004.19748378226!2d36.47778149999999!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f053a0e1a1d1d%3A0x2a1f1c1e1a1a1a1a!2sRiyadh!5e0!3m2!1sen!2ssa!4v1620000000000!5m2!1sen!2ssa" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="lux-cta">
+    <div class="cta-content-lux fade-in">
+      <h2 class="cta-title-lux">Ready To Start Your <span class="gold">Project</span>?</h2>
+      <p class="cta-desc-lux">Contact us now and get a free consultation for your project.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/201002512669" class="btn-lux btn-lux-whatsapp" style="width: auto; text-decoration: none;">
+
+          <i class="fab fa-whatsapp"></i>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lux-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon"><i class="fas fa-cube"></i></div>
+          <span class="footer-logo-text">ELAWADI</span>
+        </div>
+        <p class="footer-desc">We specialize in architectural and interior design, blending beauty with practical functionality.</p>
+        <div class="footer-social social-links" data-social-style="minimal" data-social-link-class="footer-social-link"></div>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index-en.html">Home</a></li>
+          <li><a href="portfolio-en.html">Our Projects</a></li>
+          <li><a href="services-en.html">Our Services</a></li>
+          <li><a href="contact-en.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Interior Design Services</a></li>
+          <li><a href="#">Architectural Design</a></li>
+          <li><a href="#">Execution Supervision</a></li>
+          <li><a href="#">Design Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Contact Us</h4>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-left: 8px;"></i> First Office: Alexandria, Egypt<br>Second Office: Riyadh, Saudi Arabia</li>
+          <li><i class="fas fa-phone" style="color: var(--gold); margin-left: 8px;"></i> +201002512669</li>
+          <li><i class="fas fa-envelope" style="color: var(--gold); margin-left: 8px;"></i> info@elawadi.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 ELAWADI GROUP. All Rights Reserved</p>
+      <div class="footer-links-bottom">
+        <a href="privacy-policy-en.html">Privacy Policy</a>
+        <a href="refund-cancellation-policy-en.html">Refund and Cancellation Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/201002512669" target="_blank" class="whatsapp-float">
+
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="js/main.js?v=20260510-loader-all-pages"></script>
+  <script>
+    
+
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('luxNav');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (hamburgerBtn && mobileNav) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      });
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburgerBtn.classList.remove('active');
+          mobileNav.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // Fade in animations on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    // Form submission handled by js/main.js
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        if (typeof loadDynamicContent === 'function') {
+          await loadDynamicContent(true);
+        }
+        if (typeof applyLanguageContent === 'function') {
+          applyLanguageContent();
+        }
+        if (typeof renderSocialLinks === 'function' && window.siteContent) {
+          renderSocialLinks(window.siteContent);
+        }
+        if (typeof updateSiteWhatsAppIcons === 'function' && window.siteContent) {
+          updateSiteWhatsAppIcons(window.siteContent);
+        }
+      } catch (err) {
+        console.error('Contact page dynamic load error:', err);
+      } finally {
+        
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+      }
+    });
+  </script>
+    <script src="js/branding-sync.js?v=20260511-layered-loader-everywhere1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,721 @@
+{
+  "branding": {
+    "logo": "/uploads/20260416114117041013.png",
+    "ar": {
+      "siteName": "مجموعة العوضي",
+      "tagline": "معماريون، مهندسون، ومدراء إبداعيون"
+    },
+    "en": {
+      "siteName": "ELAWADI GROUP",
+      "tagline": "ARCHITECTS & ENGINEERS"
+    },
+    "favicon": "/uploads/20260416114117041013.png"
+  },
+  "loaderSettings": {
+    "logo": "/uploads/20260510053602148083.png",
+    "backgroundColor": "#0D0D0D",
+    "logoSize": 120,
+    "animationSpeed": 1.2,
+    "backgroundDelay": 0,
+    "backgroundDisplayDuration": 900,
+    "logoDelay": 0,
+    "displayDuration": 900,
+    "fadeDuration": 800,
+    "glowColor": "#C9A13A",
+    "glowSize": 58,
+    "glowOpacity": 0.24,
+    "glowIntensity": "medium",
+    "animationEffect": "pulse",
+    "loadingTextEffect": "shine",
+    "loadingTextAr": "جاري التحميل",
+    "loadingTextEn": "Loading",
+    "showLogo": true,
+    "enableAnimation": true
+  },
+  "checkoutSettings": {
+    "currencyMode": "auto_by_country",
+    "usdExchangeRate": 52.60789,
+    "useLiveExchangeRate": true
+  },
+  "hero": {
+    "slides": [
+      {
+        "ar": {
+          "title": "يبلثثقفثقفثفثف ",
+          "subtitle": "",
+          "behindText": "شركه هندسية متخصصه في التصميم والتنفيذ"
+        },
+        "en": {
+          "title": "",
+          "subtitle": "",
+          "behindText": ""
+        },
+        "image": "/uploads/20260505191733767765.jpg",
+        "video": "",
+        "mediaType": "image",
+        "aspectRatio": "fill",
+        "buildingImage": "/uploads/20260505191825555498.png",
+        "buildingOffsetX": 0,
+        "buildingOffsetY": 125,
+        "buildingScale": 1.56,
+        "cloudBackImage": "/uploads/20260505191746247130.png",
+        "cloudFrontImage": "/uploads/20260505191751619565.png",
+        "enabled": true,
+        "showCloudBack": true,
+        "showCloudFront": true,
+        "showBuilding": true
+      }
+    ],
+    "videoOnlyMode": true,
+    "textStyle": {
+      "slideDurationSec": 5,
+      "textBehindBuilding": true,
+      "ar": {
+        "titleColor": "#ffffff",
+        "subtitleColor": "#f4f4f4",
+        "titleFontFamily": "'Tajawal', sans-serif",
+        "subtitleFontFamily": "'Tajawal', sans-serif",
+        "textBackgroundColor": "#000000",
+        "textBackgroundOpacity": 0.4,
+        "textBackgroundX": 73,
+        "textBackgroundY": 54,
+        "titleFontSizeDesktop": 80,
+        "titleFontSizeMobile": 45,
+        "subtitleFontSizeDesktop": 22,
+        "subtitleFontSizeMobile": 18,
+        "projectHoverColor": "#00d1ff",
+        "projectHoverOpacity": 0.65,
+        "primaryColor": "#7DB6E3",
+        "secondaryColor": "#74AEDB",
+        "accentColor": "#C7A252",
+        "siteBgColor": "#111111"
+      },
+      "en": {
+        "titleColor": "#ffffff",
+        "subtitleColor": "#f4f4f4",
+        "titleFontFamily": "'Tajawal', sans-serif",
+        "subtitleFontFamily": "'Tajawal', sans-serif",
+        "textBackgroundColor": "#000000",
+        "textBackgroundOpacity": 0,
+        "textBackgroundX": 50,
+        "textBackgroundY": 50,
+        "titleFontSizeDesktop": 80,
+        "titleFontSizeMobile": 45,
+        "subtitleFontSizeDesktop": 22,
+        "subtitleFontSizeMobile": 18,
+        "projectHoverColor": "#00d1ff",
+        "projectHoverOpacity": 0.65,
+        "primaryColor": "#7DB6E3",
+        "secondaryColor": "#74AEDB",
+        "accentColor": "#C7A252",
+        "siteBgColor": "#111111"
+      },
+      "cinematicText": {
+        "enabled": true,
+        "ar": {
+          "text": "نصمم مستقبل يعكس طموحك",
+          "fontSizeDesktop": 160,
+          "fontSizeMobile": 92,
+          "color": "#ffffff",
+          "opacity": 0.38,
+          "duration": 26,
+          "loopGap": 0,
+          "posX": 0,
+          "posY": 84,
+          "startPos": 100,
+          "endPos": -100,
+          "direction": "rtl"
+        },
+        "en": {
+          "text": "We design future that reflects your ambition",
+          "fontSizeDesktop": 160,
+          "fontSizeMobile": 92,
+          "color": "#ffffff",
+          "opacity": 0.38,
+          "duration": 26,
+          "loopGap": 0,
+          "posX": 0,
+          "posY": 84,
+          "startPos": -100,
+          "endPos": 100,
+          "direction": "ltr"
+        }
+      }
+    },
+    "layerMotion": {
+      "buildingRiseDuration": 1.4,
+      "cloudBackDuration": 18,
+      "cloudFrontDuration": 14,
+      "cloudBackShiftX": -18,
+      "cloudBackShiftY": 12,
+      "cloudFrontShiftX": 22,
+      "cloudFrontShiftY": -10
+    },
+    "towerParallax": {
+      "enabled": true,
+      "preset": "strong",
+      "speedDesktop": 0.11,
+      "speedMobile": 0.085,
+      "maxShiftDesktop": 34,
+      "maxShiftMobile": 22,
+      "lowPowerFactor": 0.75,
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetXMobile": 0,
+      "offsetYMobile": 0,
+      "image": "",
+      "mouseSpeedFactor": 1,
+      "scale": 1,
+      "scaleMobile": 1,
+      "respectReducedMotion": true,
+      "reduceOnLowPower": true
+    }
+  },
+  "about": {
+    "ar": {
+      "badge": "قصة النجاح",
+      "title": "نصمم لك إرثاً معمارياً يعيش للأجيال",
+      "shortText": "نحن فريق من المبدعين المتخصصين في تحويل المساحات إلى تحف فنية تجمع بين الأصالة والحداثة.",
+      "text": "بدأت رحلتنا بشغف التميز، واليوم نفخر بكوننا أحد الرواد في مجال التصميم المعماري والديكور، حيث نجمع بين العلم الهندسي الدقيق واللمسة الفنية الراقية لنقدم حلولاً متكاملة تفوق التوقعات.",
+      "stats": {
+        "experience": "9+",
+        "projects": "128+",
+        "clients": "84+"
+      }
+    },
+    "en": {
+      "badge": "SUCCESS STORY",
+      "title": "Designing Architectural Legacies for Generations",
+      "shortText": "We are a team of creators specializing in transforming spaces into masterpieces that combine authenticity and modernity.",
+      "text": "Our journey began with a passion for excellence. Today, we pride ourselves on being one of the pioneers in architectural and interior design, where we combine precise engineering science with a high-end artistic touch to provide integrated solutions that exceed expectations.",
+      "stats": {
+        "experience": "9+",
+        "projects": "128+",
+        "clients": "84+"
+      }
+    },
+    "image": "/uploads/20260426201308353388.png",
+    "team": [],
+    "timeline": [],
+    "teamSettings": {
+      "imageHeight": 350,
+      "gridColumns": 3,
+      "imageObjectFit": "cover"
+    }
+  },
+  "services": [
+    {
+      "id": "1714088000000",
+      "ar": {
+        "title": "تصميم داخلي",
+        "description": "نقدم تصاميم داخلية فاخرة تعكس ذوقك الرفيع مع استغلال أمثل للمساحات."
+      },
+      "en": {
+        "title": "Interior Design",
+        "description": "We provide luxury interior designs that reflect your fine taste with optimal use of spaces."
+      },
+      "image": "/uploads/20260426002824317135.jpg",
+      "icon": "fa-solid fa-couch"
+    },
+    {
+      "id": "1714088000001",
+      "ar": {
+        "title": "تصميم معماري",
+        "description": "تصاميم معمارية مبتكرة تجمع بين القوة الإنشائية والجمال البصري الفريد."
+      },
+      "en": {
+        "title": "Architectural Design",
+        "description": "Innovative architectural designs that combine structural strength and unique visual beauty."
+      },
+      "image": "/uploads/20260426002830832322.jpg",
+      "icon": "fa-solid fa-building"
+    },
+    {
+      "id": "1714088000002",
+      "ar": {
+        "title": "تصميم لاندسكيب",
+        "description": "تنسيق حدائق ومساحات خارجية تخلق بيئة طبيعية ساحرة ومريحة للأعصاب."
+      },
+      "en": {
+        "title": "Landscape Design",
+        "description": "Landscaping and outdoor spaces that create a charming and relaxing natural environment."
+      },
+      "image": "/uploads/20260426002835948332.jpg",
+      "icon": "fa-solid fa-tree"
+    }
+  ],
+  "projects": [],
+  "courses": [],
+  "contact": {
+    "phone": "+201002512669",
+    "whatsapp": "https://wa.me/201002512669",
+    "email": "info@elawadi-group.com",
+    "addressAr": "القاهرة، مصر",
+    "addressEn": "Cairo, Egypt",
+    "social": {
+      "facebook": "https://facebook.com/elawadi",
+      "instagram": "https://instagram.com/elawadi",
+      "linkedin": "https://linkedin.com/company/elawadi"
+    }
+  },
+  "translations": {
+    "ar": {
+      "home": "الرئيسية",
+      "about": "من نحن",
+      "services": "خدماتنا",
+      "projects": "مشاريعنا",
+      "courses": "الدورات",
+      "blog": "المدونة",
+      "contact": "اتصل بنا",
+      "bookConsultation": "احجز استشارة",
+      "exploreOurWork": "استكشف أعمالنا",
+      "viewAllProjects": "عرض كل المشاريع",
+      "latestProjects": "أحدث المشاريع",
+      "footerDesc": "مجموعة العوضي للاستشارات الهندسية والتصميم، نسعى دائماً لتقديم الأفضل لعملائنا."
+    },
+    "en": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "projects": "Projects",
+      "courses": "Courses",
+      "blog": "Blog",
+      "contact": "Contact Us",
+      "bookConsultation": "Book Consultation",
+      "exploreOurWork": "Explore Our Work",
+      "viewAllProjects": "View All Projects",
+      "latestProjects": "Latest Projects",
+      "footerDesc": "Elawadi Group for Engineering Consultancy and Design, always striving to provide the best for our clients."
+    }
+  },
+  "social": {},
+  "portfolio": [],
+  "featuredProjectIds": [],
+  "adminProfile": {
+    "name": "أحمد العوضي",
+    "title": "مدير النظام",
+    "department": "إدارة تقنية المعلومات",
+    "email": "admin@elawadi.com",
+    "location": "من الرياض، السعودية",
+    "avatar": ""
+  },
+  "homeVisibility": {
+    "hero": true,
+    "services": true,
+    "stats": true,
+    "featured": true,
+    "cta": true,
+    "whatsapp": true
+  },
+  "designSystem": {
+    "colors": {
+      "brand": {
+        "primary": {
+          "hex": "#000000",
+          "opacity": 1,
+          "nameAr": "الأساسي",
+          "nameEn": "Primary"
+        },
+        "secondary": {
+          "hex": "#FAF7F2",
+          "opacity": 1,
+          "nameAr": "الثانوي",
+          "nameEn": "Secondary"
+        },
+        "accent": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "التمييز",
+          "nameEn": "Accent"
+        },
+        "gold": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "ذهبي",
+          "nameEn": "Gold"
+        },
+        "premiumHighlight": {
+          "hex": "#E8C97A",
+          "opacity": 1,
+          "nameAr": "تمييز فاخر",
+          "nameEn": "Premium Highlight"
+        }
+      },
+      "background": {
+        "mainBg": {
+          "hex": "#a8a8a8",
+          "opacity": 1,
+          "nameAr": "الخلفية الرئيسية",
+          "nameEn": "Main Background"
+        },
+        "sectionBg": {
+          "hex": "#ffffff",
+          "opacity": 1,
+          "nameAr": "خلفية الأقسام",
+          "nameEn": "Section Background"
+        },
+        "cardBg": {
+          "hex": "#ffffff",
+          "opacity": 1,
+          "nameAr": "خلفية البطاقات",
+          "nameEn": "Card Background"
+        },
+        "glassBg": {
+          "hex": "rgba(255,255,255,0.72)",
+          "opacity": 1,
+          "nameAr": "خلفية زجاجية",
+          "nameEn": "Glass Background"
+        },
+        "heroOverlay": {
+          "hex": "rgba(0,0,0,0.28)",
+          "opacity": 1,
+          "nameAr": "تغطية الهيرو",
+          "nameEn": "Hero Overlay"
+        }
+      },
+      "typography": {
+        "primaryText": {
+          "hex": "#1A1A1A",
+          "opacity": 1,
+          "nameAr": "النص الأساسي",
+          "nameEn": "Primary Text"
+        },
+        "secondaryText": {
+          "hex": "#555555",
+          "opacity": 1,
+          "nameAr": "النص الثانوي",
+          "nameEn": "Secondary Text"
+        },
+        "mutedText": {
+          "hex": "#7A7A7A",
+          "opacity": 1,
+          "nameAr": "نص باهت",
+          "nameEn": "Muted Text"
+        },
+        "headingText": {
+          "hex": "#111111",
+          "opacity": 1,
+          "nameAr": "نص العناوين",
+          "nameEn": "Heading Text"
+        },
+        "lightText": {
+          "hex": "#FFFFFF",
+          "opacity": 1,
+          "nameAr": "نص فاتح",
+          "nameEn": "Light Text"
+        }
+      },
+      "interactive": {
+        "buttonPrimary": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "زر أساسي",
+          "nameEn": "Button Primary"
+        },
+        "buttonSecondary": {
+          "hex": "#1A1A1A",
+          "opacity": 1,
+          "nameAr": "زر ثانوي",
+          "nameEn": "Button Secondary"
+        },
+        "hover": {
+          "hex": "#9A7230",
+          "opacity": 1,
+          "nameAr": "تحويم",
+          "nameEn": "Hover"
+        },
+        "active": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "نشط",
+          "nameEn": "Active"
+        },
+        "focusRing": {
+          "hex": "rgba(196, 147, 58, 0.45)",
+          "opacity": 1,
+          "nameAr": "حلقة التركيز",
+          "nameEn": "Focus Ring"
+        },
+        "linkColor": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "لون الروابط",
+          "nameEn": "Link Color"
+        }
+      },
+      "hoverEffects": {
+        "projectHover": {
+          "hex": "#7DB6E3",
+          "opacity": 0.65,
+          "nameAr": "تحويم المشاريع",
+          "nameEn": "Project Hover"
+        },
+        "cardHover": {
+          "hex": "#FFFDF9",
+          "opacity": 1,
+          "nameAr": "تحويم البطاقات",
+          "nameEn": "Card Hover"
+        },
+        "buttonHover": {
+          "hex": "#9A7230",
+          "opacity": 1,
+          "nameAr": "تحويم الأزرار",
+          "nameEn": "Button Hover"
+        },
+        "navHover": {
+          "hex": "#C4933A",
+          "opacity": 1,
+          "nameAr": "تحويم القائمة",
+          "nameEn": "Nav Hover"
+        },
+        "imageHover": {
+          "hex": "#C4933A",
+          "opacity": 0.42,
+          "nameAr": "تحويم الصور",
+          "nameEn": "Image Hover"
+        }
+      },
+      "borders": {
+        "border": {
+          "hex": "rgba(196, 147, 58, 0.2)",
+          "opacity": 1,
+          "nameAr": "حدود",
+          "nameEn": "Border"
+        },
+        "divider": {
+          "hex": "rgba(0,0,0,0.08)",
+          "opacity": 1,
+          "nameAr": "فاصل",
+          "nameEn": "Divider"
+        },
+        "inputBorder": {
+          "hex": "rgba(196, 147, 58, 0.24)",
+          "opacity": 1,
+          "nameAr": "حدود الإدخال",
+          "nameEn": "Input Border"
+        },
+        "cardStroke": {
+          "hex": "rgba(196, 147, 58, 0.18)",
+          "opacity": 1,
+          "nameAr": "إطار البطاقة",
+          "nameEn": "Card Stroke"
+        },
+        "glowStroke": {
+          "hex": "rgba(196, 147, 58, 0.35)",
+          "opacity": 1,
+          "nameAr": "إطار متوهج",
+          "nameEn": "Glow Stroke"
+        }
+      },
+      "effects": {
+        "gradientStart": {
+          "hex": "#FAF7F2",
+          "opacity": 1,
+          "nameAr": "بداية التدرج",
+          "nameEn": "Gradient Start"
+        },
+        "gradientEnd": {
+          "hex": "#F0EBE3",
+          "opacity": 1,
+          "nameAr": "نهاية التدرج",
+          "nameEn": "Gradient End"
+        },
+        "shadowTint": {
+          "hex": "rgba(0,0,0,0.18)",
+          "opacity": 1,
+          "nameAr": "لون الظل",
+          "nameEn": "Shadow Tint"
+        },
+        "blurOverlay": {
+          "hex": "rgba(255,255,255,0.54)",
+          "opacity": 1,
+          "nameAr": "طبقة التمويه",
+          "nameEn": "Blur Overlay"
+        },
+        "ambientLight": {
+          "hex": "rgba(196, 147, 58, 0.12)",
+          "opacity": 1,
+          "nameAr": "إضاءة محيطية",
+          "nameEn": "Ambient Light"
+        }
+      },
+      "siteCore": {
+        "primary": {
+          "hex": "#000000",
+          "nameAr": "الأساسي (Legacy)",
+          "nameEn": "Primary (Legacy)",
+          "opacity": 1
+        },
+        "secondary": {
+          "hex": "#000000",
+          "nameAr": "الثانوي (Legacy)",
+          "nameEn": "Secondary (Legacy)",
+          "opacity": 1
+        },
+        "accent": {
+          "hex": "#C4933A",
+          "nameAr": "التمييز (Legacy)",
+          "nameEn": "Accent (Legacy)",
+          "opacity": 1
+        },
+        "accentDark": {
+          "hex": "#9A7230",
+          "nameAr": "تمييز داكن",
+          "nameEn": "Accent Dark",
+          "opacity": 1
+        },
+        "accentLight": {
+          "hex": "#E8C97A",
+          "nameAr": "تمييز فاتح",
+          "nameEn": "Accent Light",
+          "opacity": 1
+        },
+        "accentGlow": {
+          "hex": "rgba(196, 147, 58, 0.5)",
+          "nameAr": "وهج التمييز",
+          "nameEn": "Accent Glow",
+          "opacity": 1
+        },
+        "accentSubtle": {
+          "hex": "rgba(196, 147, 58, 0.12)",
+          "nameAr": "تمييز خفيف",
+          "nameEn": "Accent Subtle",
+          "opacity": 1
+        },
+        "bgDark": {
+          "hex": "#8f8f8f",
+          "nameAr": "خلفية رئيسية (Legacy)",
+          "nameEn": "Main Background (Legacy)",
+          "opacity": 1
+        },
+        "bgDarkSecondary": {
+          "hex": "#000000",
+          "nameAr": "خلفية ثانوية (Legacy)",
+          "nameEn": "Secondary Background (Legacy)",
+          "opacity": 1
+        },
+        "bgCard": {
+          "hex": "#FFFFFF",
+          "nameAr": "خلفية البطاقة (Legacy)",
+          "nameEn": "Card Background (Legacy)",
+          "opacity": 1
+        },
+        "bgCardHover": {
+          "hex": "#FFFDF9",
+          "nameAr": "تحويم البطاقة (Legacy)",
+          "nameEn": "Card Hover (Legacy)",
+          "opacity": 1
+        },
+        "white": {
+          "hex": "#FFFFFF",
+          "nameAr": "أبيض",
+          "nameEn": "White",
+          "opacity": 1
+        },
+        "textLight": {
+          "hex": "#6E6E6E",
+          "nameAr": "نص فاتح (Legacy)",
+          "nameEn": "Light Text (Legacy)",
+          "opacity": 1
+        },
+        "textMuted": {
+          "hex": "#7A7A7A",
+          "nameAr": "نص باهت (Legacy)",
+          "nameEn": "Muted Text (Legacy)",
+          "opacity": 1
+        },
+        "textDark": {
+          "hex": "#1A1A1A",
+          "nameAr": "نص داكن (Legacy)",
+          "nameEn": "Dark Text (Legacy)",
+          "opacity": 1
+        },
+        "textCream": {
+          "hex": "#F0E6D2",
+          "nameAr": "نص كريمي",
+          "nameEn": "Cream Text",
+          "opacity": 1
+        },
+        "textGold": {
+          "hex": "#C4933A",
+          "nameAr": "نص ذهبي",
+          "nameEn": "Gold Text",
+          "opacity": 1
+        },
+        "borderSoft": {
+          "hex": "rgba(196, 147, 58, 0.2)",
+          "nameAr": "حدود خفيفة",
+          "nameEn": "Soft Border",
+          "opacity": 1
+        },
+        "borderGold": {
+          "hex": "rgba(196, 147, 58, 0.3)",
+          "nameAr": "حدود ذهبية",
+          "nameEn": "Gold Border",
+          "opacity": 1
+        },
+        "premiumBlue": {
+          "hex": "#7DB6E3",
+          "nameAr": "أزرق بريميوم",
+          "nameEn": "Premium Blue",
+          "opacity": 1
+        },
+        "premiumBlueDeep": {
+          "hex": "#74AEDB",
+          "nameAr": "أزرق بريميوم داكن",
+          "nameEn": "Premium Blue Deep",
+          "opacity": 1
+        },
+        "premiumShadow": {
+          "hex": "rgba(125, 182, 227, 0.25)",
+          "nameAr": "ظل بريميوم",
+          "nameEn": "Premium Shadow",
+          "opacity": 1
+        },
+        "premiumOverlay": {
+          "hex": "rgba(125, 182, 227, 0.08)",
+          "nameAr": "طبقة بريميوم",
+          "nameEn": "Premium Overlay",
+          "opacity": 1
+        }
+      }
+    }
+  },
+  "uiEffects": {
+    "cards": {
+      "hoverEnabled": true,
+      "hoverLiftPx": 6,
+      "hoverScale": 1.02,
+      "imageZoom": 1.05,
+      "shadowOpacity": 0.25,
+      "transitionMs": 450
+    },
+    "featured": {
+      "showMiniGrid": true,
+      "showScrollGrid": true,
+      "cardRadiusPx": 24,
+      "gapPx": 18,
+      "cardLiftPx": 6
+    },
+    "projectDisplay": {
+      "theme": "almimar-editorial",
+      "enabledHome": true,
+      "enabledPortfolio": true,
+      "primaryCardColor": "#F6F3EC",
+      "backgroundColor": "#EFEAE1",
+      "textColor": "#1D1A16",
+      "accentColor": "#C4933A",
+      "radiusPx": 34,
+      "shadowOpacity": 0.22,
+      "hoverLiftPx": 8,
+      "imageZoom": 1.035,
+      "scrollSpeed": 1.15,
+      "cardSpacingPx": 28,
+      "overlapPx": 86,
+      "stickyTopPx": 112,
+      "grayscale": 0.78,
+      "buttonColor": "#1D1A16",
+      "buttonHoverColor": "#C4933A"
+    }
+  }
+}

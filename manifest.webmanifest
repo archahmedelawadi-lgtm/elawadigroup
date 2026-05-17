@@ -1,0 +1,15 @@
+{
+  "name": "ELAWADI GROUP",
+  "short_name": "ELAWADI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#C7A252",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

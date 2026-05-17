@@ -1,0 +1,1017 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="إتمام شراء الكورس">
+    <title>الدفع | ELAWADI STUDIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c7a252;
+            --primary-dark: #a8893f;
+            --bg-dark: #FAF7F2;
+            --bg-card: #FFFFFF;
+            --border-color: #E2D6C2;
+            --text-primary: #1A1A1A;
+            --text-secondary: #a3a3a3;
+            --success: #4caf50;
+            --danger: #e53935;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Tajawal", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 20px 50px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .course-preview {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .course-preview img {
+            width: 110px;
+            height: 82px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            background: #101010;
+        }
+
+        .course-title {
+            font-size: 1.06rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .course-meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .price-box {
+            margin-top: 16px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-value {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .note {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .field-group {
+            margin-top: 12px;
+        }
+
+        .field-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .field-select {
+            width: 100%;
+            background: #111;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 11px 12px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            background: rgba(229, 57, 53, 0.12);
+            border: 1px solid rgba(229, 57, 53, 0.28);
+            color: #ffb4b1;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #000;
+        }
+
+        .btn-dark {
+            background: #1d1d1d;
+            border: 1px solid var(--border-color);
+            color: #fff;
+        }
+
+        .btn-success {
+            background: rgba(76, 175, 80, 0.18);
+            border: 1px solid rgba(76, 175, 80, 0.45);
+            color: #c8facc;
+        }
+
+        .help {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .paymob-link {
+            display: none;
+            margin-top: 10px;
+            color: var(--primary);
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .paymob-link.show {
+            display: inline-block;
+        }
+
+        .success-panel {
+            display: none;
+            margin-top: 18px;
+            background: rgba(76, 175, 80, 0.12);
+            border: 1px solid rgba(76, 175, 80, 0.35);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .success-panel.show {
+            display: block;
+        }
+
+        .success-title {
+            color: #d1ffd5;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .resource-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+
+        /* ===== Unified Notice Navbar ===== */
+        .checkout-notice-nav,
+        .checkout-notice-nav * {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+        }
+
+        .checkout-notice-nav {
+            position: sticky;
+            top: 16px;
+            z-index: 2000;
+            width: min(1240px, calc(100% - 24px));
+            margin: 16px auto 8px;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: #fff;
+            border: 2px solid #C7A252;
+            box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+        }
+
+        .checkout-notice-nav .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .checkout-notice-nav .nav-logo-img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .checkout-notice-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .checkout-notice-nav .nav-links a {
+            color: #0f172a;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .checkout-notice-nav .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checkout-notice-nav .nav-call {
+            color: #0f172a;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .checkout-notice-nav .nav-call a {
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        .checkout-notice-nav .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #C7A252;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 8px 13px;
+            border: 2px solid #C7A252;
+        }
+
+        .checkout-notice-nav .nav-cta:hover {
+            background: #A68A3A;
+            border-color: #A68A3A;
+        }
+
+        @media (max-width: 992px) {
+            .checkout-notice-nav {
+                width: calc(100% - 16px);
+                padding: 10px 12px;
+            }
+
+            .checkout-notice-nav .nav-links,
+            .checkout-notice-nav .nav-call {
+                display: none;
+            }
+        }
+
+    </style>
+        <script>
+        document.documentElement.classList.add('elawadi-courses-logo-first');
+    </script>
+    <style>
+        html.elawadi-courses-logo-first.elawadi-loader-booting body > :not(#loader) {
+            visibility: hidden !important;
+        }
+    </style><script src="js/loader-boot.js?v=20260511-layered-loader-everywhere1"></script>
+</head>
+<body>
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Loading Logo" class="loader-img" loading="eager" decoding="sync" fetchpriority="high">
+            </div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <p class="loader-label">Loading</p>
+        </div>
+    </div>
+    <div class="page">
+        <nav class="checkout-notice-nav">
+            <a href="index.html" class="nav-logo">
+                <img src="uploads/20260416114117041013.png" alt="Logo" class="nav-logo-img">
+                <span>ELAWADI GROUP</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">عن الشركة</a>
+                <a href="services.html">خدماتنا</a>
+                <a href="portfolio.html">مشاريعنا</a>
+                <a href="courses.html" class="active">الكورسات</a>
+                <a href="contact.html">اتصل بنا</a>
+            </div>
+            <div class="nav-actions">
+            <div class="nav-lang lang-switch-pro" role="group" aria-label="Language Switcher">
+                <button type="button" class="lang-btn" data-lang="ar">AR</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
+                <span class="nav-call">Call Us: <a href="tel:+201002512669">+201002512669</a></span>
+                <a href="contact.html" class="nav-cta">Get In Touch</a>
+            </div>
+        </nav>
+
+        <div class="layout">
+            <section class="card">
+                <h2>ملخص الكورس</h2>
+                <div class="course-preview">
+                    <img id="courseImage" src="" alt="صورة الكورس">
+                    <div>
+                        <div class="course-title" id="courseTitle">جاري تحميل الكورس...</div>
+                        <div class="course-meta" id="courseCategory">--</div>
+                        <div class="course-meta" id="courseInstructor">--</div>
+                        <div class="course-meta" id="courseDuration">--</div>
+                    </div>
+                </div>
+                <div class="price-box">
+                    <span>السعر</span>
+                    <span class="price-value" id="coursePrice">--</span>
+                </div>
+                <div class="note">
+                    بعد الدفع، هيفتح لك لينك ملفات الكورس + زر واتساب لطلب الباسورد حسب الإعدادات اللي في لوحة الأدمن.
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>إتمام الدفع</h2>
+                <div class="help">
+                    الخطوة 1: اضغط زر الدفع لفتح بوابة Paymob.<br>
+                    الخطوة 2: بعد الدفع الفعلي وعودة حالة الدفع ناجحة، يتم تفعيل الكورس تلقائيًا.
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="countrySelect">الدولة</label>
+                    <select id="countrySelect" class="field-select">
+                        <option value="EG">مصر</option>
+                        <option value="SA">السعودية</option>
+                        <option value="AE">الإمارات</option>
+                        <option value="KW">الكويت</option>
+                        <option value="QA">قطر</option>
+                        <option value="OTHER">دولة أخرى</option>
+                    </select>
+                </div>
+                <div class="field-group hidden" id="currencySelectWrap">
+                    <label class="field-label" for="currencySelect">العملة</label>
+                    <select id="currencySelect" class="field-select">
+                        <option value="EGP">الجنيه المصري (EGP)</option>
+                        <option value="USD">الدولار الأمريكي (USD)</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <div class="note" id="currencyHint">لو اخترت مصر هتدفع بالجنيه المصري، وغير مصر بالدولار.</div>
+                </div>
+                <div class="error" id="errorBox"></div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="startPaymentBtn">
+                        <i class="fa-solid fa-credit-card"></i> الدفع عبر Paymob
+                    </button>
+                </div>
+
+                <a id="paymobLink" class="paymob-link" target="_blank" rel="noopener noreferrer">
+                    فتح صفحة الدفع يدوياً
+                </a>
+
+                <div class="success-panel" id="successPanel">
+                    <div class="success-title">تم تأكيد الدفع بنجاح</div>
+                    <div class="help">استخدم الأزرار التالية للوصول إلى محتوى الكورس:</div>
+                    <div class="resource-actions">
+                        <a id="driveBtn" class="btn btn-success hidden" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-google-drive"></i> فتح ملفات الكورس (Google Drive)
+                        </a>
+                        <a id="whatsappBtn" class="btn btn-success hidden" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp"></i> اضغط هنا لطلب الباسورد على واتساب
+                        </a>
+                        <a href="courses.html" class="btn btn-dark">العودة للكورسات</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let currentCourse = null;
+        let selectedCountryCode = "EG";
+        let selectedCurrencyCode = "EGP";
+        const checkoutSettings = {
+            currencyMode: "auto_by_country", // auto_by_country | buyer_choice
+            usdExchangeRate: 50,
+            useLiveExchangeRate: true
+        };
+        let liveExchangeRate = null;
+        let liveExchangeRateUpdatedAt = "";
+
+        function showError(message) {
+            const errorBox = document.getElementById("errorBox");
+            errorBox.textContent = message;
+            errorBox.classList.add("show");
+        }
+
+        function clearError() {
+            const errorBox = document.getElementById("errorBox");
+            errorBox.textContent = "";
+            errorBox.classList.remove("show");
+        }
+
+        function getCourseFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const raw = params.get("course");
+            if (!raw) return null;
+            try {
+                return JSON.parse(decodeURIComponent(raw));
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function getSelectedCountryCode() {
+            return selectedCountryCode || "EG";
+        }
+
+        function normalizeCurrencyMode(mode) {
+            return mode === "buyer_choice" ? "buyer_choice" : "auto_by_country";
+        }
+
+        function applyCheckoutSettings(settings) {
+            if (!settings || typeof settings !== "object") return;
+
+            checkoutSettings.currencyMode = normalizeCurrencyMode(settings.currencyMode);
+            const rate = Number(settings.usdExchangeRate);
+            if (rate > 0) checkoutSettings.usdExchangeRate = rate;
+            checkoutSettings.useLiveExchangeRate = settings.useLiveExchangeRate !== false;
+        }
+
+        function getEffectiveExchangeRate() {
+            if (checkoutSettings.useLiveExchangeRate && Number(liveExchangeRate) > 0) {
+                return Number(liveExchangeRate);
+            }
+            return Number(checkoutSettings.usdExchangeRate || 50);
+        }
+
+        async function fetchLiveExchangeRate() {
+            if (!checkoutSettings.useLiveExchangeRate) return;
+            try {
+                const res = await fetch("api/exchange-rate", { cache: "no-store" });
+                if (!res.ok) return;
+                const result = await res.json();
+                if (result?.ok && Number(result.rate) > 0) {
+                    liveExchangeRate = Number(result.rate);
+                    liveExchangeRateUpdatedAt = result.updatedAt || "";
+                    return;
+                }
+            } catch (error) {
+                console.warn("Failed to fetch live exchange rate:", error);
+            }
+
+            // Fallback: fetch directly from public providers if backend endpoint is unavailable.
+            try {
+                const providers = [
+                    "https://open.er-api.com/v6/latest/USD",
+                    "https://api.frankfurter.app/latest?from=USD&to=EGP",
+                    "https://api.exchangerate.host/latest?base=USD&symbols=EGP"
+                ];
+
+                const results = await Promise.allSettled(
+                    providers.map(url => fetch(url, { cache: "no-store" }).then(r => r.json()))
+                );
+
+                const rates = [];
+                for (const item of results) {
+                    if (item.status !== "fulfilled") continue;
+                    const payload = item.value;
+                    const rate = Number(payload?.rates?.EGP || payload?.result || 0);
+                    if (rate > 0) rates.push(rate);
+                }
+
+                if (rates.length > 0) {
+                    liveExchangeRate = Math.max(...rates);
+                    liveExchangeRateUpdatedAt = new Date().toISOString();
+                }
+            } catch (fallbackError) {
+                console.warn("Public exchange-rate fallback failed:", fallbackError);
+            }
+        }
+
+        function isBuyerCurrencyChoiceMode() {
+            return checkoutSettings.currencyMode === "buyer_choice";
+        }
+
+        function refreshCurrencyControls() {
+            const wrap = document.getElementById("currencySelectWrap");
+            const currencySelect = document.getElementById("currencySelect");
+            if (!wrap || !currencySelect) return;
+
+            if (isBuyerCurrencyChoiceMode()) {
+                wrap.classList.remove("hidden");
+                if (!["EGP", "USD"].includes(selectedCurrencyCode)) {
+                    selectedCurrencyCode = "EGP";
+                }
+                currencySelect.value = selectedCurrencyCode;
+                return;
+            }
+
+            wrap.classList.add("hidden");
+            selectedCurrencyCode = getSelectedCountryCode() === "EG" ? "EGP" : "USD";
+            currencySelect.value = selectedCurrencyCode;
+        }
+
+        function getSelectedCurrency() {
+            if (isBuyerCurrencyChoiceMode()) {
+                return selectedCurrencyCode === "USD" ? "USD" : "EGP";
+            }
+            return getSelectedCountryCode() === "EG" ? "EGP" : "USD";
+        }
+
+        function getPayableAmount() {
+            const basePriceEGP = Number(currentCourse?.price || 0);
+            if (basePriceEGP <= 0) return 0;
+
+            if (getSelectedCurrency() === "EGP") {
+                return basePriceEGP;
+            }
+
+            const usdPrice = Number(currentCourse?.usdPrice || 0);
+            if (usdPrice > 0) return usdPrice;
+            return Number((basePriceEGP / getEffectiveExchangeRate()).toFixed(2));
+        }
+
+        function formatPriceByCurrency(amount, currency) {
+            const n = Number(amount || 0);
+            if (n <= 0) return "مجاني";
+            if (currency === "USD") return `${n.toLocaleString("en-US")} USD`;
+            return `${n.toLocaleString("ar-EG")} ج.م`;
+        }
+
+        function refreshPricingUI() {
+            if (!currentCourse) return;
+
+            refreshCurrencyControls();
+            const coursePrice = Number(currentCourse.price || 0);
+            const isFree = coursePrice <= 0;
+            const currency = getSelectedCurrency();
+            const amount = getPayableAmount();
+            const payBtn = document.getElementById("startPaymentBtn");
+            const helpBox = document.querySelector(".help");
+            const currencyHint = document.getElementById("currencyHint");
+
+            document.getElementById("coursePrice").textContent = formatPriceByCurrency(amount, currency);
+
+            if (currencyHint) {
+                if (isBuyerCurrencyChoiceMode()) {
+                    currencyHint.textContent = "وضع العملة: اختيار المشتري (يمكنه التبديل بين EGP و USD).";
+                } else {
+                    const rateText = getEffectiveExchangeRate().toLocaleString("en-US");
+                    const updateText = liveExchangeRateUpdatedAt ? `آخر تحديث: ${new Date(liveExchangeRateUpdatedAt).toLocaleString("ar-EG")}` : "";
+                    currencyHint.textContent = currency === "EGP"
+                        ? "وضع العملة: تلقائي حسب الدولة - مصر = جنيه مصري (EGP)."
+                        : `وضع العملة: تلقائي حسب الدولة - خارج مصر = دولار أمريكي (USD). سعر الصرف المستخدم: ${rateText}. ${updateText}`;
+                }
+            }
+
+            if (isFree) {
+                if (payBtn) {
+                    payBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> الحصول على الكورس مجاناً';
+                    payBtn.classList.remove("btn-primary");
+                    payBtn.style.background = "linear-gradient(135deg, #4caf50, #388e3c)";
+                    payBtn.style.color = "#fff";
+                }
+                if (helpBox) {
+                    helpBox.innerHTML = "هذا الكورس متاح مجاناً للجميع. اضغط على الزر بالأسفل للوصول إلى المحتوى فوراً.";
+                }
+            } else {
+                if (payBtn) {
+                    payBtn.classList.add("btn-primary");
+                    payBtn.style.background = "";
+                    payBtn.style.color = "";
+                    payBtn.innerHTML = `<i class="fa-solid fa-credit-card"></i> الدفع عبر Paymob (${currency})`;
+                }
+                if (helpBox) {
+                    helpBox.innerHTML = "الخطوة 1: اضغط زر الدفع لفتح بوابة Paymob.<br>الخطوة 2: بعد نجاح الدفع فعليًا، يتم تفعيل الكورس تلقائيًا.";
+                }
+            }
+        }
+
+        function hasVerifiedPaymentFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get("payment") === "success";
+        }
+
+        function updateCourseUI(course) {
+            const title = course.ar?.title || course.title || "كورس";
+            const category = course.ar?.category || course.category || "تصميم";
+            const instructor = course.ar?.instructor || course.instructor || "غير محدد";
+            const duration = course.duration || "غير محدد";
+            const thumb = course.thumbnail || "uploads/20260416210035469793.png";
+
+            document.getElementById("courseTitle").textContent = title;
+            document.getElementById("courseCategory").textContent = `التصنيف: ${category}`;
+            document.getElementById("courseInstructor").textContent = `المدرس: ${instructor}`;
+            document.getElementById("courseDuration").textContent = `المدة: ${duration}`;
+            document.getElementById("courseImage").src = thumb;
+            refreshPricingUI();
+
+            if (Number(course.price || 0) <= 0) {
+                const cardTitle = document.querySelector(".card:nth-child(2) h2");
+                if (cardTitle) cardTitle.textContent = "الوصول للمحتوى";
+            } else {
+                const cardTitle = document.querySelector(".card:nth-child(2) h2");
+                if (cardTitle) cardTitle.textContent = "إتمام الدفع";
+            }
+        }
+
+        async function resolveCourseDetails() {
+            const fromUrl = getCourseFromUrl();
+            if (!fromUrl) {
+                showError("لم يتم تحديد الكورس بشكل صحيح.");
+                return null;
+            }
+
+            try {
+                const response = await fetch("api/content", { cache: "no-store" });
+                if (!response.ok) return fromUrl;
+                const content = await response.json();
+                applyCheckoutSettings(content.checkoutSettings || {});
+                const courses = Array.isArray(content.courses) ? content.courses : [];
+                const matched = courses.find(c =>
+                    (c.ar?.title || c.title) === (fromUrl.ar?.title || fromUrl.title)
+                );
+                return matched || fromUrl;
+            } catch (error) {
+                return fromUrl;
+            }
+        }
+
+        async function createPaymentSession() {
+            const amount = getPayableAmount();
+            const currency = getSelectedCurrency();
+            const countryCode = getSelectedCountryCode();
+            const currencyMode = checkoutSettings.currencyMode;
+            if (amount <= 0) return null;
+
+            const response = await fetch("api/paymob/token", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    amount,
+                    currency,
+                    countryCode,
+                    currencyMode
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("تعذر بدء عملية الدفع الآن.");
+            }
+
+            return response.json();
+        }
+
+        async function startPayment() {
+            clearError();
+            const btn = document.getElementById("startPaymentBtn");
+            const coursePrice = Number(currentCourse?.price || 0);
+            const isFree = coursePrice <= 0;
+            
+            console.log(">>> [startPayment] called. isFree:", isFree, "price:", coursePrice);
+            btn.disabled = true;
+            btn.innerHTML = isFree 
+                ? '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح الكورس...' 
+                : '<i class="fa-solid fa-spinner fa-spin"></i> جاري تجهيز الدفع...';
+
+            try {
+                if (isFree) {
+                    console.log(">>> [startPayment] calling finalizeEnrollment(true)");
+                    await finalizeEnrollment(true);
+                    return;
+                }
+
+                const result = await createPaymentSession();
+                if (!result?.success) {
+                    const details = result?.details ? `\n${result.details}` : "";
+                    throw new Error((result?.message || "فشل إنشاء جلسة الدفع.") + details);
+                }
+                const iframeUrl = result?.iframe_url;
+                if (!iframeUrl) {
+                    throw new Error("لم يتم استلام رابط بوابة الدفع.");
+                }
+
+                const linkEl = document.getElementById("paymobLink");
+                linkEl.href = iframeUrl;
+                linkEl.classList.add("show");
+
+                window.open(iframeUrl, "_blank", "noopener,noreferrer");
+            } catch (error) {
+                showError(error.message || "حدث خطأ أثناء تجهيز الدفع.");
+            } finally {
+                btn.disabled = false;
+                if (isFree) {
+                    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> الحصول على الكورس مجاناً';
+                } else {
+                    btn.innerHTML = `<i class="fa-solid fa-credit-card"></i> الدفع عبر Paymob (${getSelectedCurrency()})`;
+                }
+            }
+        }
+
+        async function finalizeEnrollment(isFree = false) {
+            console.log("Starting enrollment for:", currentCourse?.id, "Free:", isFree);
+            clearError();
+            const startBtn = document.getElementById("startPaymentBtn");
+            const isPaymentVerified = isFree || hasVerifiedPaymentFromUrl();
+
+            try {
+                if (!isPaymentVerified) {
+                    throw new Error("لا يمكن تأكيد الدفع قبل وصول حالة نجاح فعلية من بوابة الدفع.");
+                }
+
+                const enrollmentData = {
+                    courseId: currentCourse?.id || currentCourse?._id || "unknown",
+                    courseTitle: currentCourse?.ar?.title || currentCourse?.title || "Unknown Course",
+                    isFree: isFree,
+                    paymentVerified: isPaymentVerified
+                };
+                console.log("Sending enrollment data:", enrollmentData);
+
+                // Free courses should open immediately even if backend API is unavailable.
+                if (isFree) {
+                    try {
+                        const localEnrollments = JSON.parse(localStorage.getItem("freeEnrollments") || "[]");
+                        localEnrollments.push({
+                            ...enrollmentData,
+                            enrolledAt: new Date().toISOString()
+                        });
+                        localStorage.setItem("freeEnrollments", JSON.stringify(localEnrollments));
+                    } catch (e) {
+                        console.warn("Local enrollment cache failed:", e);
+                    }
+
+                    showSuccessActions();
+                    return;
+                }
+
+                const response = await fetch("api/courses/enroll", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(enrollmentData)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text().catch(() => "Unknown error");
+                    console.error("Enrollment error response:", response.status, errorText);
+                    let errMsg = "فشل تأكيد الوصول للكورس";
+                    try {
+                        const errorData = JSON.parse(errorText);
+                        errMsg = errorData.message || `خطأ (${response.status})`;
+                    } catch(e) {
+                        errMsg = `خطأ في الاتصال بالسيرفر (${response.status})`;
+                    }
+                    throw new Error(errMsg);
+                }
+
+                const result = await response.json();
+                console.log("Enrollment success:", result);
+                showSuccessActions();
+            } catch (error) {
+                console.error("Enrollment catch block:", error);
+                showError(error.message || "حدث خطأ غير متوقع أثناء تفعيل الكورس.");
+            } finally {
+                // Also reset startBtn if it was showing a spinner
+                if (startBtn) {
+                    startBtn.disabled = false;
+                }
+            }
+        }
+
+        function showSuccessActions() {
+            const successPanel = document.getElementById("successPanel");
+            const driveBtn = document.getElementById("driveBtn");
+            const whatsappBtn = document.getElementById("whatsappBtn");
+            const actionsDiv = document.querySelector(".actions");
+
+            if (actionsDiv) actionsDiv.style.display = "none";
+            const helpBox = document.querySelector(".help");
+            if (helpBox) helpBox.style.display = "none";
+
+            const driveLink = currentCourse.driveLink || "";
+            // Use global whatsapp link, and pre-fill message with course title
+            const baseWhatsapp = siteContent.contact?.whatsapp || "https://wa.me/";
+            const whatsappLink = baseWhatsapp.includes('?') 
+                ? `${baseWhatsapp}&text=${encodeURIComponent('طلب ملفات الكورس: ' + (currentCourse.ar?.title || ''))}`
+                : `${baseWhatsapp}?text=${encodeURIComponent('طلب ملفات الكورس: ' + (currentCourse.ar?.title || ''))}`;
+
+            let hasResources = false;
+            if (driveLink) {
+                driveBtn.href = driveLink;
+                driveBtn.classList.remove("hidden");
+                hasResources = true;
+            } else {
+                driveBtn.classList.add("hidden");
+            }
+
+            if (whatsappLink) {
+                whatsappBtn.href = whatsappLink;
+                whatsappBtn.classList.remove("hidden");
+                hasResources = true;
+            } else {
+                whatsappBtn.classList.add("hidden");
+            }
+
+            if (!hasResources) {
+                const successTitle = document.querySelector(".success-title");
+                if (successTitle) {
+                    successTitle.textContent = "تم الاشتراك بنجاح!";
+                    const helpText = successPanel.querySelector(".help");
+                    if (helpText) helpText.textContent = "يرجى التواصل مع الدعم الفني للحصول على ملفات الكورس، حيث لم يتم تحديد روابط تلقائية بعد.";
+                }
+            }
+
+            successPanel.classList.add("show");
+        }
+
+        async function initPage() {
+            console.log(">>> [checkout] initPage started");
+            console.log(">>> [checkout] URL params:", window.location.search);
+
+            const countrySelect = document.getElementById("countrySelect");
+            if (countrySelect) {
+                selectedCountryCode = countrySelect.value || "EG";
+                countrySelect.addEventListener("change", () => {
+                    selectedCountryCode = countrySelect.value || "EG";
+                    refreshPricingUI();
+                });
+            }
+
+            const currencySelect = document.getElementById("currencySelect");
+            if (currencySelect) {
+                selectedCurrencyCode = currencySelect.value || "EGP";
+                currencySelect.addEventListener("change", () => {
+                    selectedCurrencyCode = currencySelect.value || "EGP";
+                    refreshPricingUI();
+                });
+            }
+            
+            currentCourse = await resolveCourseDetails();
+            await fetchLiveExchangeRate();
+            console.log(">>> [checkout] resolved course:", currentCourse);
+            console.log(">>> [checkout] course price:", currentCourse?.price);
+            console.log(">>> [checkout] is free:", Number(currentCourse?.price || 0) <= 0);
+            
+            if (!currentCourse) return;
+            updateCourseUI(currentCourse);
+            setInterval(async () => {
+                await fetchLiveExchangeRate();
+                refreshPricingUI();
+            }, 5 * 60 * 1000);
+
+            const params = new URLSearchParams(window.location.search);
+            console.log(">>> [checkout] payment param:", params.get("payment"));
+            if (hasVerifiedPaymentFromUrl()) {
+                console.log(">>> [checkout] calling finalizeEnrollment(false) for payment success");
+                await finalizeEnrollment(false);
+            }
+        }
+
+        document.getElementById("startPaymentBtn").addEventListener("click", startPayment);
+        window.addEventListener("DOMContentLoaded", initPage);
+    </script>
+<script>
+(function () {
+    const btns = document.querySelectorAll('.lang-btn[data-lang]');
+    if (!btns.length) return;
+
+    const path = window.location.pathname || '';
+    const isEn = path.includes('-en.html') || document.documentElement.lang === 'en';
+    const activeLang = isEn ? 'en' : 'ar';
+
+    btns.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === activeLang);
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const newLang = this.dataset.lang;
+            if (!newLang || newLang === activeLang) return;
+
+            localStorage.setItem('siteLang', newLang);
+
+            const currentPath = window.location.pathname;
+            let newPath = currentPath;
+
+            if (newLang === 'en' && currentPath.endsWith('.html') && !currentPath.includes('-en.html')) {
+                newPath = currentPath.replace('.html', '-en.html');
+            } else if (newLang === 'ar' && currentPath.includes('-en.html')) {
+                newPath = currentPath.replace('-en.html', '.html');
+            }
+
+            window.location.href = newPath + window.location.search + window.location.hash;
+        });
+    });
+})();
+</script>    <script src="js/branding-sync.js?v=20260511-layered-loader-everywhere1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

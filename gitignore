@@ -1,0 +1,20 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environment / Logs
+error.log
+server_error.log
+server_log.txt
+out.log
+err.log
+test.py
+
+# Data & Uploads (Should be persistent, not in git for production)
+# data/content.json
+# uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

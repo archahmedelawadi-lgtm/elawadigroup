@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: elawadi-studio
+    runtime: python
+    buildCommand: ""
+    startCommand: "python flask_app.py"
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: PAYMOB_API_KEY
+        sync: false
+      - key: PAYMOB_INTEGRATION_ID_EGP
+        sync: false
+      - key: PAYMOB_IFRAME_ID_EGP
+        sync: false
+      - key: PAYMOB_INTEGRATION_ID_USD
+        sync: false
+      - key: PAYMOB_IFRAME_ID_USD
+        sync: false
